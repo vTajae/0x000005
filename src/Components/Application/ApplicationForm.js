@@ -8,16 +8,6 @@ import {
 import { useValidation } from "../../utils/helpers.js";
 import { useAutocomplete, MyAutocomplete } from "./AutoComplete.js";
 
-const textFieldProps = (formik, name, formatPhoneNumber) => ({
-  fullWidth: true,
-  error: formik.touched[name] && Boolean(formik.errors[name]),
-  name,
-  value: formik.values[name] || "",
-  onBlur: formik.handleBlur,
-  onChange: handleChange(formik, name, formatPhoneNumber),
-  helperText: formik.touched[name] && formik.errors[name],
-});
-
 const handleChange = (formik, name, formatPhoneNumber) => (event) => {
   const { value } = event.target;
   if (name.includes("Phone")) {
@@ -28,9 +18,20 @@ const handleChange = (formik, name, formatPhoneNumber) => (event) => {
   }
 };
 
+const textFieldProps = (formik, name, formatPhoneNumber) => ({
+  fullWidth: true,
+  error: formik.touched[name] && Boolean(formik.errors[name]),
+  name,
+  value: formik.values[name] || "",
+  onBlur: formik.handleBlur,
+  onChange: handleChange(formik, name, formatPhoneNumber),
+  helperText: formik.touched[name] && formik.errors[name],
+});
+
+
 const ApplicationForm = React.memo(
   ({ expanded, formData, validationRules, fieldProperties }) => {
-    const { formik } = useValidation(formData, validationRules, fieldProperties);
+    const { formik, formatPhoneNumber } = useValidation(formData, validationRules, fieldProperties);
 
     const { selectedPlace, options, setSearch, handleAutocompleteChange } =
       useAutocomplete(formik, expanded);
@@ -64,14 +65,14 @@ const ApplicationForm = React.memo(
                 />
               ) : (
                 <TextFieldWrapper
-                  {...textFieldProps(formik, field)}
-                  label={fieldProps.name}
-                  type={fieldProps.type || "text"}
-                  autoComplete={fieldProps.autoComplete || "off"}
-                  placeholder={fieldProps.placeholder}
-                  multiline={fieldProps.multiline}
-                  rows={fieldProps.rows}
-                />
+                {...textFieldProps(formik, field, formatPhoneNumber)}
+                label={fieldProps.name}
+                type={fieldProps.type || "text"}
+                autoComplete={fieldProps.autoComplete || "off"}
+                placeholder={fieldProps.placeholder}
+                multiline={fieldProps.multiline}
+                rows={fieldProps.rows}
+              />              
               )}
             </Grid>
           );
