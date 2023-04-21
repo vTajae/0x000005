@@ -1,21 +1,178 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+import {
+  Box,
+  CardContent,
+  CardMedia,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { StyledCard, SectionTitle } from "./styles";
 
-function About() {
-  return (
-    <section className="my-5">
-      <div className="my-2">
-        <div className="profile-img my-5">
-        <i className="fas fa-user-circle" style={{ fontSize: "96px" }}></i>
-        </div>
-        <p>
-        Helvetica put a bird on it church-key Blue Bottle banjo bespoke brunch Etsy authentic Marfa quinoa typewriter plaid direct trade small batch wayfarers bicycle rights cliche craft beer gastropub single-origin coffee Godard Carles you probably haven't heard of them irony pickled kitsch synth sriracha gentrify literally heirloom blog Truffaut paleo scenester
-        </p>
-        <p>
-        Echo Park sriracha Pinterest vegan biodiesel 90's irony iPhone Kickstarter Carles crucifix kitsch narwhal dreamcatcher pickled trust fund selvage art party letterpress Tumblr post-ironic kogi Thundercats Tonx Brooklyn Pitchfork Odd Future authentic normcore freegan leggings Schlitz chambray organic tousled retro fap squid street art church-key fashion axe Wes Anderson bespoke whatever gentrify banh mi you probably haven't heard of them American Apparel next level pug ugh.
-        </p>
-      </div>
-    </section>
-  );
-}
+const ServiceCard = ({ title, description, image }) => (
+  <Grid item xs={12} sm={6} md={4}>
+    <StyledCard>
+      <CardMedia component="img" height="140" image={image} alt="Placeholder" />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
+      </CardContent>
+    </StyledCard>
+  </Grid>
+);
 
-export default About;
+ServiceCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};
+
+const Testimonial = ({ name, quote }) => (
+  <Grid item xs={12} sm={4}>
+    <Stack spacing={2}>
+      <Typography variant="subtitle1">{name}</Typography>
+      <Typography>"{quote}"</Typography>
+    </Stack>
+  </Grid>
+);
+
+Testimonial.propTypes = {
+  name: PropTypes.string.isRequired,
+  quote: PropTypes.string.isRequired,
+};
+
+const FeatureSection = ({ title, items }) => (
+  <Box mt={3}>
+    <SectionTitle variant="h4">{title}</SectionTitle>
+    <Grid container spacing={3}>
+      {items.map((item) => (
+        <ServiceCard
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          image={item.image}
+        />
+      ))}
+    </Grid>
+  </Box>
+);
+
+FeatureSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+const TestimonialSection = ({ title, testimonials }) => (
+  <Box mt={3}>
+    <SectionTitle variant="h4">{title}</SectionTitle>
+    <Grid container spacing={3}>
+      {testimonials.map((testimonial) => (
+        <Testimonial
+          key={testimonial.id}
+          name={testimonial.name}
+          quote={testimonial.quote}
+        />
+      ))}
+    </Grid>
+  </Box>
+);
+
+TestimonialSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  testimonials: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      quote: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+const WhyChooseUsSection = ({ title, items }) => (
+  <Box mt={3}>
+    <SectionTitle variant="h4">{title}</SectionTitle>
+    <Grid container spacing={3}>
+      {items.map((item) => (
+        <Grid item xs={12} sm={6} key={item.id}>
+          <Typography variant="h5">{item.title}</Typography>
+          <Typography>{item.description}</Typography>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
+);
+
+WhyChooseUsSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+const AboutUs = ({
+  featureSectionData,
+  testimonialSectionData,
+  whyChooseUsSectionData,
+}) => (
+  <Box>
+    <FeatureSection
+      title="Featured Services/Courses"
+      items={featureSectionData}
+    />
+
+    <TestimonialSection
+      title="Testimonials"
+      testimonials={testimonialSectionData}
+    />
+
+    <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
+
+    <Box mt={3} mb={3}>
+      <Divider />
+    </Box>
+  </Box>
+);
+
+AboutUs.propTypes = {
+  featureSectionData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  testimonialSectionData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      quote: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  whyChooseUsSectionData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+export default AboutUs;

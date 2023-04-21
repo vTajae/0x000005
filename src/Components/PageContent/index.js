@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
+import { MyPageContent, pageWrapper } from "./styles";
 
 const PageContent = (props) => {
-
   return (
-    <div>
-      {props.children}
-    </div>
+      <MyPageContent>{props.children}</MyPageContent>
   );
 };
 

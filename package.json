@@ -2,22 +2,39 @@
   "name": "tajae",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@apollo/client": "^3.7.9",
+    "@babel/preset-react": "^7.18.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.0",
     "@mui/lab": "^5.0.0-alpha.116",
     "@mui/material": "^5.11.5",
+    "@react-google-maps/api": "^2.17.1",
+    "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
+    "email-validator": "^2.0.4",
+    "formik": "^2.2.9",
+    "jwt-decode": "^3.1.2",
+    "libphonenumber-js": "^1.10.18",
     "react": "^17.0.2",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^17.0.2",
+    "react-phone-number-input": "^3.2.18",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.0",
-    "sass": "^1.52.2",
-    "web-vitals": "^2.1.4"
+    "redux": "^4.2.1",
+    "styled-components": "^5.3.6",
+    "validator": "^13.7.0",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,6 +61,7 @@
     ]
   },
   "devDependencies": {
-    "@wixc3/react-board": "^2.1.3"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
