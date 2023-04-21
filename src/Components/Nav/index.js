@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { capitalizeFirstLetter } from "../../utils/helpers";
-import { MainNav, NavLink, StyledButton } from "./styles";
+import React from "react";
+import { MainNav, NavLink } from "./styles";
 import { Grid } from "@mui/material";
 import Auth from "../../utils/auth";
 
@@ -30,7 +29,7 @@ function Nav(props) {
         <Grid item xs={12} md={2}>
           <NavLink to="/">Home</NavLink>
         </Grid>
-        <Grid item xs={12} md={2}>
+        {/* <Grid item xs={12} md={2}>
           <NavLink to="/sandbox">Sandbox</NavLink>
         </Grid>
         <Grid item xs={12} md={2}>
@@ -38,7 +37,7 @@ function Nav(props) {
         </Grid>
         <Grid item xs={12} md={2}>
           <NavLink to="/contact">Contact</NavLink>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} md={2}>
           <NavLink to="/registration">Registration</NavLink>
         </Grid>
