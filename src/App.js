@@ -14,18 +14,9 @@ import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import Registration from "./Components/Registration";
-// import Sandbox from "./utils/test/Sandbox";
-// import About from "./Components/About";
 import Contact from "./Components/Contact";
 import PageContent from "./Components/PageContent";
-
-// import {
-//   featureSectionData,
-//   whyChooseUsSectionData,
-//   testimonialSectionData,
-// } from "./Components/About/data";
-
-import "./App.css";
+import NotFoundPage from "./Components/NotFound";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -58,21 +49,14 @@ function App() {
           <PageContent>
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* <Route
-                path="/about"
-                element={
-                  <About
-                    featureSectionData={featureSectionData}
-                    testimonialSectionData={testimonialSectionData}
-                    whyChooseUsSectionData={whyChooseUsSectionData}
-                  />
-                }
-              /> */}
-              <Route path="/contact" element={<Contact />} />
-              {/* <Route path="/sandbox" element={<Sandbox />} /> */}
               <Route path="/registration" element={<Registration />} />
+              <Route path="/contact" element={<Contact />} />
+
+              {/* Add a catch-all route to render NotFoundPage */}
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </PageContent>
+
           <Footer />
         </Provider>
       </Router>
