@@ -17,6 +17,7 @@ import Registration from "./Components/Registration";
 import Contact from "./Components/Contact";
 import PageContent from "./Components/PageContent";
 import NotFoundPage from "./Components/NotFound";
+import PasswordProtectedPage from "./Components/PasswordPage";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -48,7 +49,8 @@ function App() {
 
           <PageContent>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<PasswordProtectedPage />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/registration" element={<Registration />} />
               <Route path="/contact" element={<Contact />} />
 
