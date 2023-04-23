@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { FormContainer, Form, StyledTextField, StyledButton } from "./styles";
 
-const PasswordProtectedPage = () => {
+const PasswordProtectedPage = ({ onAuthentication }) => {
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -23,34 +25,35 @@ const PasswordProtectedPage = () => {
     schema
       .validate({ password })
       .then(() => {
-        // Password is valid, submit form to server for authentication
-        // You can use a library like Axios to make an HTTP request to the server
+        // Password is valid, call the onAuthentication function to authenticate the user
+        onAuthentication(password);
+        // Navigate to the desired page (change this to the page you want to show after successful authentication)
+        navigate("/");
       })
       .catch((error) => {
         // Password is invalid, display error message to user
-        console.log(error.message);
+        setError(error.message);
       });
   };
 
-  if (!isAuthenticated) {
-    return (
-      <form onSubmit={handleSubmit}>
-        <TextField
+  return (
+    <FormContainer>
+      <Form onSubmit={handleSubmit}>
+        <StyledTextField
           label="Password"
           variant="outlined"
           type="password"
           value={password}
           onChange={handlePasswordChange}
+          error={Boolean(error)}
+          helperText={error}
         />
-        <Button type="submit" variant="contained">
+        <StyledButton type="submit" variant="contained">
           Submit
-        </Button>
-      </form>
-    );
-  }
-
-  // If the user is authenticated, render the protected content
-  return <h1>Protected content</h1>;
+        </StyledButton>
+      </Form>
+    </FormContainer>
+  );
 };
 
 export default PasswordProtectedPage;
