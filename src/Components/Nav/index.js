@@ -15,12 +15,6 @@ function Nav(props) {
           <Grid item xs={12} md={2}>
             <NavLink to="/registration">Registration</NavLink>
           </Grid>
-          <Grid item xs={12} md={2}>
-            <NavLink to="/sandbox">Sandbox</NavLink>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <NavLink to="/about">About</NavLink>
-          </Grid>
         </Grid>
       );
     } else {
@@ -29,7 +23,7 @@ function Nav(props) {
         <Grid item xs={12} md={2}>
           <NavLink to="/">Home</NavLink>
         </Grid>
-        {/* <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={2}>
           <NavLink to="/sandbox">Sandbox</NavLink>
         </Grid>
         <Grid item xs={12} md={2}>
@@ -37,7 +31,8 @@ function Nav(props) {
         </Grid>
         <Grid item xs={12} md={2}>
           <NavLink to="/contact">Contact</NavLink>
-        </Grid> */}
+        </Grid>
+        
         <Grid item xs={12} md={2}>
           <NavLink to="/registration">Registration</NavLink>
         </Grid>

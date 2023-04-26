@@ -9,12 +9,23 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { StyledCard, SectionTitle } from "./styles";
+import { StyledCard } from "./styles";
 import {
   whyChooseUsSectionData,
   featureSectionData,
   testimonialSectionData,
 } from "./data";
+
+import {styled} from "@mui/system";
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const SectionBox = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
 
 const ServiceCard = ({ title, description, image }) => (
   <Grid item xs={12} sm={6} md={4}>
@@ -54,7 +65,7 @@ Testimonial.propTypes = {
 
 const FeatureSection = ({ title, items }) => (
   <Box>
-    <SectionTitle variant="h4">{title}</SectionTitle>
+    <Typography variant="h4">{title}</Typography>
     <Grid container spacing={3}>
       {items.map((item) => (
         <ServiceCard
@@ -82,7 +93,7 @@ FeatureSection.propTypes = {
 
 const TestimonialSection = ({ title, testimonials }) => (
   <Box>
-    <SectionTitle variant="h4">{title}</SectionTitle>
+    <Typography variant="h4">{title}</Typography>
     <Grid container spacing={3}>
       {testimonials.map((testimonial) => (
         <Testimonial
@@ -107,7 +118,7 @@ TestimonialSection.propTypes = {
 };
 
 const WhyChooseUsSection = ({ title, items }) => (
-  <Box>
+  <SectionBox>
     <SectionTitle variant="h4">{title}</SectionTitle>
     <Grid container spacing={3}>
       {items.map((item) => (
@@ -117,7 +128,7 @@ const WhyChooseUsSection = ({ title, items }) => (
         </Grid>
       ))}
     </Grid>
-  </Box>
+  </SectionBox>
 );
 
 WhyChooseUsSection.propTypes = {
@@ -137,19 +148,20 @@ WhyChooseUsSection.propTypes = {
 //   whyChooseUsSectionData,
 // }) => (
 const AboutUs = () => (
-  <Stack spacing={5}>
+  <SectionBox xs={{height: "100vh"}}>
     <FeatureSection
       title="Featured Services/Courses"
       items={featureSectionData}
     />
-
     <TestimonialSection
       title="Testimonials"
       testimonials={testimonialSectionData}
     />
-
     <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
-  </Stack>
+    <Box mt={3} mb={3}>
+      <Divider />
+    </Box>
+  </SectionBox>
 );
 
 AboutUs.propTypes = {

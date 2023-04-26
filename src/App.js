@@ -26,6 +26,7 @@ import PageContent from "./Components/PageContent";
 import NotFoundPage from "./Components/NotFound";
 import PasswordProtectedPage from "./Components/PasswordPage";
 import Login from "./Components/Login";
+import About from "./Components/About";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -78,19 +79,20 @@ function App() {
             </Header>
             <PageContent>
               <Routes>
-                <Route
+                {/* <Route
                   path="/"
                   element={<Authenticated isAuthenticated={isAuthenticated} />}
-                >
+                > */}
                   <Route index element={<Home />} />
                   <Route path="/registration" element={<Registration />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/login" element={<Login />} />
-                </Route>
-                <Route
+                  <Route path="/about" element={<About />} />
+                {/* </Route> */}
+                {/* <Route
                   path="/password-protected-page"
                   element={<PasswordProtectedPage onAuthentication={handleAuthentication} />}
-                />
+                /> */}
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </PageContent>
