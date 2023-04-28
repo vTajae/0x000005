@@ -17,7 +17,8 @@ import {
   FooterLinkWrapper,
   ContactFooterWrapper,
 } from "./styles";
-import "./footer.scss";  
+import { FormContainer, EmailInput, SubmitButton } from "./styles";
+import "./footer.scss";
 
 function withScrolling(Component) {
   return function ScrollableComponent(props) {
@@ -51,6 +52,32 @@ function FooterLink({ to, children, handleLinkClick }) {
   );
 }
 
+function ContactInfo(props) {
+  const { address, phone, email, handleLinkClick } = props;
+
+  // Split the address into multiple lines using comma as delimiter
+  const addressLines = address.split("\n");
+
+  const handleClick = () => {
+    if (handleLinkClick) {
+      handleLinkClick();
+    }
+  };
+
+  return (
+    <Stack spacing={1}>
+      <ContactLink to="/contact" onClick={handleClick} className="contact-link">
+        Contact Us
+      </ContactLink>
+      {addressLines.map((line, index) => (
+        <p key={index}>{line.trim()}</p>
+      ))}
+      <p>{phone}</p>
+      <p>{email}</p>
+    </Stack>
+  );
+}
+
 function FooterLinks(props) {
   const { handleLinkClick } = props;
 
@@ -79,26 +106,6 @@ function FooterLinks(props) {
 }
 
 const ScrollableFooterLinks = withScrolling(FooterLinks);
-
-function ContactInfo(props) {
-  const { address, phone, email, handleLinkClick } = props;
-
-  // Split the address into multiple lines using comma as delimiter
-  const addressLines = address.split("\n");
-
-  return (
-    <Stack spacing={1}>
-      <FooterLink to="/contact" handleLinkClick={handleLinkClick} className="contact-link">
-        Contact Us
-      </FooterLink>
-      {addressLines.map((line, index) => (
-        <p key={index}>{line.trim()}</p>
-      ))}
-      <p>{phone}</p>
-      <p>{email}</p>
-    </Stack>
-  );
-}
 
 const ScrollableContactInfo = withScrolling(ContactInfo);
 
@@ -158,15 +165,29 @@ function Footer(props) {
               </Stack>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4}>
-              <Stack spacing={1}>
+              <Stack spacing={2}>
                 <h3>Join Our Newsletter</h3>
                 <p>
                   Subscribe to our newsletter for the latest news and updates:
                 </p>
-                <form>
-                  <input type="text" placeholder="Your Email Address" />
-                  <button type="submit">Subscribe</button>
-                </form>
+                <FormContainer>
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
+                  >
+                    <EmailInput
+                      type="email"
+                      placeholder="Your Email Address"
+                      variant="outlined"
+                      size="small"
+                    />
+                    <SubmitButton type="submit" variant="contained">
+                      Subscribe
+                    </SubmitButton>
+                  </Stack>
+                </FormContainer>
               </Stack>
             </Grid>
           </Grid>

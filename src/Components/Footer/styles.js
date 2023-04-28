@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Grid, Stack, Box, Container } from "@mui/material";
+import { Grid, Stack, Box, Container, TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const MyFooter = styled(Box)`
@@ -115,5 +115,21 @@ export const ContactFooterWrapper = styled(Grid)`
   display: none;
 }
 `;
+
+
+export const FormContainer = styled('form')({
+
+});
+
+export const EmailInput = styled(TextField)({
+});
+
+export const SubmitButton = styled(Button)({
+  backgroundColor: '#4CAF50',
+  color: '#fff',
+  '&:hover': {
+    backgroundColor: '#3e8e41',
+  },
+});
 
 
