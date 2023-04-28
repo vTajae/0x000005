@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { StyledCard, SectionTitle } from "./styles";
+import { StyledCard, SectionTitle, StyledBox } from "./styles";
 import {
   whyChooseUsSectionData,
   featureSectionData,
@@ -53,9 +53,11 @@ Testimonial.propTypes = {
 };
 
 const FeatureSection = ({ title, items }) => (
-  <Box>
-    <SectionTitle variant="h4">{title}</SectionTitle>
-    <Grid container spacing={3}>
+<StyledBox>
+<SectionTitle variant="h3" align="center" color="primary">
+      {title}
+    </SectionTitle>
+    <Grid container spacing={4}>
       {items.map((item) => (
         <ServiceCard
           key={item.id}
@@ -65,7 +67,7 @@ const FeatureSection = ({ title, items }) => (
         />
       ))}
     </Grid>
-  </Box>
+  </StyledBox>
 );
 
 FeatureSection.propTypes = {
@@ -81,9 +83,11 @@ FeatureSection.propTypes = {
 };
 
 const TestimonialSection = ({ title, testimonials }) => (
-  <Box>
-    <SectionTitle variant="h4">{title}</SectionTitle>
-    <Grid container spacing={3}>
+  <StyledBox>
+    <SectionTitle variant="h3" align="center" color="primary">
+      {title}
+    </SectionTitle>
+    <Grid container spacing={4} justifyContent="center">
       {testimonials.map((testimonial) => (
         <Testimonial
           key={testimonial.id}
@@ -92,7 +96,7 @@ const TestimonialSection = ({ title, testimonials }) => (
         />
       ))}
     </Grid>
-  </Box>
+  </StyledBox>
 );
 
 TestimonialSection.propTypes = {
@@ -107,17 +111,23 @@ TestimonialSection.propTypes = {
 };
 
 const WhyChooseUsSection = ({ title, items }) => (
-  <Box>
-    <SectionTitle variant="h4">{title}</SectionTitle>
-    <Grid container spacing={3}>
+  <StyledBox>
+    <SectionTitle variant="h3" align="center" color="primary">
+      {title}
+    </SectionTitle>
+    <Grid container spacing={4} justifyContent="center">
       {items.map((item) => (
         <Grid item xs={12} sm={6} key={item.id}>
-          <Typography variant="h5">{item.title}</Typography>
-          <Typography>{item.description}</Typography>
+          <Typography variant="h4" align="center" color="primary">
+            {item.title}
+          </Typography>
+          <Typography align="center" sx={{ mt: 2 }}>
+            {item.description}
+          </Typography>
         </Grid>
       ))}
     </Grid>
-  </Box>
+  </StyledBox>
 );
 
 WhyChooseUsSection.propTypes = {
@@ -131,13 +141,8 @@ WhyChooseUsSection.propTypes = {
   ).isRequired,
 };
 
-// const AboutUs = ({
-//   featureSectionData,
-//   testimonialSectionData,
-//   whyChooseUsSectionData,
-// }) => (
 const AboutUs = () => (
-  <Stack spacing={5}>
+  <Box sx={{ backgroundColor: "#f5f5f5" }}>
     <FeatureSection
       title="Featured Services/Courses"
       items={featureSectionData}
@@ -148,36 +153,11 @@ const AboutUs = () => (
       testimonials={testimonialSectionData}
     />
 
-    <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
-  </Stack>
-);
 
-AboutUs.propTypes = {
-  featureSectionData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ),
-  // ).isRequired,
-  testimonialSectionData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      quote: PropTypes.string.isRequired,
-    })
-  ),
-  // ).isRequired,
-  whyChooseUsSectionData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    })
-  ),
-  // ).isRequired,
-};
+    <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
+
+
+  </Box>
+);
 
 export default AboutUs;

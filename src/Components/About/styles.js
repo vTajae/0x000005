@@ -1,4 +1,4 @@
-import { Typography, Button, Card } from "@mui/material";
+import { Typography, Button, Card, Box } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const SectionTitle = styled(Typography)({
@@ -13,4 +13,10 @@ export const StyledCard = styled(Card)({
 export const StyledButton = styled(Button)({
   borderRadius: "24px",
   textTransform: "none",
+});
+
+export const StyledBox = styled(Box)({
+  padding: "5rem 0",
+  margin: "0 auto",
+  maxWidth: "1200px",
 });

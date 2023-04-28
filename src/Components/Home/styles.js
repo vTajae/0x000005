@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Grid, Stack, List, Drawer, Box, Container, Button, Typography } from "@mui/material";
 
 export const HomeWrapper = styled(Grid)`
-height: 100vh
   font-size: 48px;
   text-align: center;
   display: flex;
