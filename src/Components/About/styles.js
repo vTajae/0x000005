@@ -3,6 +3,8 @@ import { styled } from "@mui/system";
 
 export const SectionTitle = styled(Typography)({
   marginBottom: "1rem",
+  padding: "1rem 0",
+
 });
 
 export const StyledCard = styled(Card)({
@@ -16,7 +18,12 @@ export const StyledButton = styled(Button)({
 });
 
 export const StyledBox = styled(Box)({
-  padding: "5rem 0",
+  padding: "4rem 2.5rem",
   margin: "0 auto",
-  maxWidth: "1200px",
+});
+
+
+export const AboutWrapper = styled(Box)({
+  padding: "0rem 0",
+
 });

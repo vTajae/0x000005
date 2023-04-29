@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { StyledCard, SectionTitle, StyledBox } from "./styles";
+import { StyledCard, SectionTitle, StyledBox, AboutWrapper } from "./styles";
 import {
   whyChooseUsSectionData,
   featureSectionData,
@@ -17,7 +17,7 @@ import {
 } from "./data";
 
 const ServiceCard = ({ title, description, image }) => (
-  <Grid item xs={12} sm={6} md={4}>
+  <Grid item xs={12} sm={6} md={6}>
     <StyledCard>
       <CardMedia component="img" height="140" image={image} alt="Placeholder" />
       <CardContent>
@@ -38,12 +38,15 @@ ServiceCard.propTypes = {
   image: PropTypes.string.isRequired,
 };
 
-const Testimonial = ({ name, quote }) => (
+const Testimonial = ({ name, quote, image }) => (
   <Grid item xs={12} sm={4}>
-    <Stack spacing={2}>
-      <Typography variant="subtitle1">{name}</Typography>
-      <Typography>"{quote}"</Typography>
-    </Stack>
+    <StyledCard>
+      <CardMedia component="img" height="140" image={image} alt="Placeholder" />
+      <CardContent>
+        <Typography variant="subtitle1">{name}</Typography>
+        <Typography>"{quote}"</Typography>
+      </CardContent>
+    </StyledCard>
   </Grid>
 );
 
@@ -53,8 +56,8 @@ Testimonial.propTypes = {
 };
 
 const FeatureSection = ({ title, items }) => (
-<StyledBox>
-<SectionTitle variant="h3" align="center" color="primary">
+  <StyledBox>
+    <SectionTitle variant="h3" align="center" color="primary">
       {title}
     </SectionTitle>
     <Grid container spacing={4}>
@@ -90,6 +93,7 @@ const TestimonialSection = ({ title, testimonials }) => (
     <Grid container spacing={4} justifyContent="center">
       {testimonials.map((testimonial) => (
         <Testimonial
+        image={testimonial.image}
           key={testimonial.id}
           name={testimonial.name}
           quote={testimonial.quote}
@@ -142,22 +146,16 @@ WhyChooseUsSection.propTypes = {
 };
 
 const AboutUs = () => (
-  <Box sx={{ backgroundColor: "#f5f5f5" }}>
-    <FeatureSection
-      title="Featured Services/Courses"
-      items={featureSectionData}
-    />
+  <AboutWrapper sx={{ backgroundColor: "#f5f5f5" }}>
+    <FeatureSection title="Featured Services" items={featureSectionData} />
 
     <TestimonialSection
       title="Testimonials"
       testimonials={testimonialSectionData}
     />
 
-
     <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
-
-
-  </Box>
+  </AboutWrapper>
 );
 
 export default AboutUs;
