@@ -34,7 +34,7 @@ export const testimonialSectionData = [
   {
   id: 3,
   name: "Rachel Davis - Parent",
-  quote: "My child has not only improved their grades in math, but also gained a new sense of confidence and enthusiasm for learning, thanks to the personalized tutoring services offered by this company. The tutor was patient, knowledgeable, and really took the time to understand my child's learning style and needs. I would highly recommend this company to any parent looking for academic support for their child.",
+  quote: "My child has not only improved their grades in java programming, but also gained a new sense of confidence and enthusiasm for learning, thanks to the personalized tutoring services offered by this company. The tutor was patient, knowledgeable, and really took the time to understand my child's learning style and needs. I would highly recommend this company to any parent looking for academic support for their child.",
   image: "https://via.placeholder.com/300",
 
 },

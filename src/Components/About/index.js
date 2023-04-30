@@ -1,12 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  Box,
   CardContent,
   CardMedia,
-  Divider,
   Grid,
-  Stack,
   Typography,
 } from "@mui/material";
 import { StyledCard, SectionTitle, StyledBox, AboutWrapper } from "./styles";
@@ -146,7 +143,7 @@ WhyChooseUsSection.propTypes = {
 };
 
 const AboutUs = () => (
-  <AboutWrapper sx={{ backgroundColor: "#f5f5f5" }}>
+  <AboutWrapper>
     <FeatureSection title="Featured Services" items={featureSectionData} />
 
     <TestimonialSection

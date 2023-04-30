@@ -24,6 +24,7 @@ export const StyledBox = styled(Box)({
 
 
 export const AboutWrapper = styled(Box)({
-  padding: "0rem 0",
+  padding: "0 0 5% 0",
+  // backgroundColor: "#f5f5f5",
 
 });

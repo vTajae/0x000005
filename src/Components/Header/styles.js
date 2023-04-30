@@ -56,9 +56,11 @@ export const StyledGrid = styled(Grid)`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  
 `;
 
-export const StyledGridChild = styled(Grid)``;
+export const StyledGridChild = styled(Grid)`
+`;
 
 export const StyledLink = styled(Link)`
 color: #000;
