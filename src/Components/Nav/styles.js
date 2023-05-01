@@ -24,11 +24,11 @@ export const MainNav = styled.nav`
   align-items: center;
   width: 100%;
   text-align: center;
- 
+  height: 100%;
 
   @media (max-width: 600px) {
     flex-wrap: wrap;
-    width: 100vw;
+    width: 100%;
   }
 `;
 
@@ -45,15 +45,17 @@ export const NavLink = styled(Link)`
 `;
 
 export const NavWrapper = styled(Grid)`
-  height: 100vh;
+  height: 100%;
   align-items: center;
 `;
 
+
 export const StyledNavLink = styled(Link).attrs(() => ({
-  role: 'button',
-  'aria-haspopup': true,
-  'aria-expanded': false,
+  role: "button",
+  "aria-haspopup": true,
+  "aria-expanded": false,
 }))`
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,10 +70,6 @@ export const StyledNavLink = styled(Link).attrs(() => ({
   }
 `;
 
-
 export const RegularNav = styled(Grid)`
   /* Add any styles for the regular navbar here */
 `;
-
-
-

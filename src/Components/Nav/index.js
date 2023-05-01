@@ -53,24 +53,16 @@ export const Nav = () => {
                 </StyledNavLink>
               </Grid>
               <Grid item xs={12}>
-                <StyledNavLink to="/about">
-                  About Us
-                </StyledNavLink>
+                <StyledNavLink to="/about">About Us</StyledNavLink>
               </Grid>
               <Grid item xs={12}>
-                <StyledNavLink to="/contact">
-                  Contact Us
-                </StyledNavLink>
+                <StyledNavLink to="/contact">Contact Us</StyledNavLink>
               </Grid>
               <Grid item xs={12}>
-                <StyledNavLink to="/registration">
-                  Registration
-                </StyledNavLink>
+                <StyledNavLink to="/registration">Registration</StyledNavLink>
               </Grid>
               <Grid item xs={12}>
-                <StyledNavLink to="/login">
-                  Login
-                </StyledNavLink>
+                <StyledNavLink to="/login">Login</StyledNavLink>
               </Grid>
             </NavWrapper>
           )}

@@ -7,7 +7,7 @@ export const StyledDrawer = styled(Drawer)`
     display: flex;
     align-items: center;
     overflow-y: auto;
-    height: auto;
+    height: 100%;
     width: 100%;
   }
 `;
