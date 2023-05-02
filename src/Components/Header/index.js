@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import coverImage from "../../assets/logo.svg";
 import { MainHeader, StyledGrid, StyledDrawer, Logo } from "./styles";
-import {
-  Grid,
-  IconButton,
-  Drawer,
-  MenuIcon,
-  Typography,
-  Box,
-  ListItem,
-} from "@mui/material";
+import { Grid, IconButton, Drawer, Typography, Box } from "@mui/material";
 import AppsIcon from "@mui/icons-material/Apps";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 function Header(props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const headerRef = useRef(null);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -22,8 +16,38 @@ function Header(props) {
 
   const smallScreen = useMediaQuery("(max-width:900px)");
 
+  useEffect(() => {
+    let requestId;
+
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const { height } = headerRef.current.getBoundingClientRect();
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const newScrollY = Math.max(0, scrollTop - height);
+        setScrollY(newScrollY);
+      }
+    };
+
+    const updateAnimation = () => {
+      if (headerRef.current) {
+        headerRef.current.style.transform = `translateY(-${scrollY}px)`;
+        requestId = window.requestAnimationFrame(updateAnimation);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    requestId = window.requestAnimationFrame(updateAnimation);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.cancelAnimationFrame(requestId);
+    };
+  }, [scrollY]);
+
   return (
-    <header>
+    <header ref={headerRef}>
       <MainHeader>
         {smallScreen ? (
           <StyledGrid container spacing={1}>
