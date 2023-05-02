@@ -9,7 +9,6 @@ export const SectionTitle = styled(Typography)({
 
 export const StyledCard = styled(Card)({
   borderRadius: "12px",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
 });
 
 export const StyledButton = styled(Button)({

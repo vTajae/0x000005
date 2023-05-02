@@ -1,39 +1,36 @@
-import logo from "../../assets/logo.svg";
 import React from "react";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
-import "./index.scss";
-import { Box } from "@mui/material";
-import { HomeWrapper } from "./styles";
+import styled from "styled-components";
+import { Container, Grid, Button } from "@mui/material";
+import {
+  HomeWrapper,
+  Title,
+  Subtitle,
+  ButtonWrapper,
+  StyledButton,
+} from "./styles";
+import { Navbar, HeroSection, VideoBackground } from "./styles";
+import {
+  TextCard,
+  TitleCard,
+  IconWrapper,
+  StyledPaper,
+  HeaderWording,
+} from "./styles";
 
-function Home() {
+const Home = () => {
   return (
-    <Box className="App-header" sx={{ height: "100vh" }}>
-      <Row style={{ flexDirection: "column" }} className="daRow">
-        <Col className="container">
-          <div className="avatar">
-            <img src={logo} alt="logo" />
-          </div>
-        </Col>
-
-        <Col style={{ height: "1rem" }}>
-          <h3> Website coming soon ..</h3>{" "}
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button
-            className="contact"
-            href="https://www.instagram.com/qias.me/"
-            variant="outline-info"
-          >
-            Contact Us
-          </Button>{" "}
-        </Col>
-      </Row>
-    </Box>
+    <HeroSection>
+      <VideoBackground src="/path/to/video.mp4" autoPlay loop muted />
+      <HeaderWording container>
+        <Grid item xs={12} md={6}>
+        <Title variant="h1">Welcome to Our Website</Title>
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <Title variant="h1">Welcome to Our Website</Title>
+        </Grid>
+      </HeaderWording>
+    </HeroSection>
   );
-}
+};
 
 export default Home;

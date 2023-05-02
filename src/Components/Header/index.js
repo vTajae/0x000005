@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import coverImage from "../../assets/logo.svg";
-import {
-  MainHeader,
-  StyledGrid,
-  StyledDrawer,
-  Logo,
-} from "./styles";
+import { MainHeader, StyledGrid, StyledDrawer, Logo } from "./styles";
 import {
   Grid,
   IconButton,
@@ -17,6 +12,7 @@ import {
 } from "@mui/material";
 import AppsIcon from "@mui/icons-material/Apps";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
 function Header(props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -51,7 +47,7 @@ function Header(props) {
             </Grid>
           </StyledGrid>
         ) : (
-          <StyledGrid container >
+          <StyledGrid container>
             <Grid item xs={7} md={4}>
               <Box display="flex" alignItems="center">
                 <Logo src={coverImage} alt="logo" />
@@ -61,7 +57,7 @@ function Header(props) {
               </Box>
             </Grid>
             <Grid item xs={3} md={8}>
-                {props.children}
+              {props.children}
             </Grid>
           </StyledGrid>
         )}

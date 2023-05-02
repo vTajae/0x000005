@@ -54,5 +54,17 @@ export const whyChooseUsSectionData = [
     description:
       "All of our tutors are experienced professionals who are passionate about teaching and dedicated to helping students excel.",
   },
+  // {
+  //   id: 3,
+  //   title: "Flexibility and Convenience",
+  //   description:
+  //     "Our tutors are passionate about teaching and available whenever students need help, with flexible scheduling to fit busy lifestyles.",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Commitment to Client Success",
+  //   description:
+  //     "Our company is committed to the success of our clients. We have a team of passionate professionals who are dedicated to helping students excel and work closely with clients to understand their unique needs.",
+  // },
 
 ];

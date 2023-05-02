@@ -13,7 +13,8 @@ export const StyledDrawer = styled(Drawer)`
 `;
 
 export const MainHeader = styled.div`
-  background-color: #fff;
+  background-color: transparent
+  ;
   padding: 1rem;
   min-width: 250px;
 
@@ -79,3 +80,4 @@ export const Logo = styled.img`
     width: 75px;
   }
 `;
+

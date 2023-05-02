@@ -37,7 +37,7 @@ ServiceCard.propTypes = {
 
 const Testimonial = ({ name, quote, image }) => (
   <Grid item xs={12} sm={4}>
-    <StyledCard>
+    <StyledCard elevation={0}>
       <CardMedia component="img" height="140" image={image} alt="Placeholder" />
       <CardContent>
         <Typography variant="subtitle1">{name}</Typography>
@@ -146,12 +146,14 @@ const AboutUs = () => (
   <AboutWrapper>
     <FeatureSection title="Featured Services" items={featureSectionData} />
 
+    <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
+
+
     <TestimonialSection
       title="Testimonials"
       testimonials={testimonialSectionData}
     />
 
-    <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
   </AboutWrapper>
 );
 

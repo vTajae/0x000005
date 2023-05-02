@@ -1,50 +1,78 @@
-import styled from "styled-components";
-import { Grid, Stack, List, Drawer, Box, Container, Button, Typography } from "@mui/material";
+import styled from 'styled-components';
+import { Container, Grid, Button, Typography, Paper } from '@mui/material';
 
-export const HomeWrapper = styled(Grid)`
-  font-size: 48px;
-  text-align: center;
+export const HeroSection = styled.section`
+  position: relative;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  text-align: center;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 `;
 
-export const HomeGrid = styled(Grid)`
+export const VideoBackground = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  z-index: -1;
+`;
+
+
+export const Title = styled.h1`
+  font-size: 64px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 48px;
+  }
+`;
+
+export const StyledPaper = styled(Paper)`
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+`;
+
+export const IconWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-`;
-
-export const DaRow = styled(Grid)`
-  flex-direction: column;
-
-  div{
-  padding: 2rem 0;
-}
-`;
-
-export const Avatar = styled.div`
-  width: 150px;
-  align-items: center !important;
-  height: 150px;
-  box-sizing: border-box;
-  border: 5px white solid;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: #f50057;
+  color: #fff;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-  transform: translatey(0px);
-  animation: float 6s ease-in-out infinite;
-  img {   animation: wiggle 4s ease-in-out infinite;
-    width: 150%; height: auto; position: relative; left: -30%; bottom: 2%; }
+  margin-bottom: 16px;
 `;
 
-export const Contact = styled(Button)`
-    font-weight: 600 !important;
+export const TitleCard = styled(Typography)`
+  font-size: 24px;
 
+`;
+
+export const TextCard = styled(Typography)`
+
+`;
+
+export const HeaderWording = styled(Grid)`
+z-index: 2;
+position: relative;
+text-align: center;
 `;
