@@ -2,7 +2,8 @@ html, body, #root {
   height: 100%;
 }
 
-header {
+
+/* header {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,4 +18,4 @@ header {
 
 header.scrolling {
   transform: translateY(-100%);
-}
+} */

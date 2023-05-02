@@ -53,9 +53,6 @@ const FormToggle = ({
   return (
     <Container>
       <Container>
-        <Typography variant="h2" mb={0} pt={2} align="center" gutterBottom>
-          Registration
-        </Typography>
         <Grid container justifyContent="center" spacing={3} pt={2}>
           <Grid item xs={12} sm={12} md={12} alignItems={"center"}>
             <Card>
@@ -69,7 +66,7 @@ const FormToggle = ({
                         align="center"
                         gutterBottom
                       >
-                        Organization Enrollment Form
+                        {formTitle}
                       </Typography>
                     ) : (
                       <Typography
@@ -78,7 +75,7 @@ const FormToggle = ({
                         align="center"
                         gutterBottom
                       >
-                        Organization Enrollment Form
+                        {formTitle}
                       </Typography>
                     )}
                   </Grid>{" "}

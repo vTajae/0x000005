@@ -1,5 +1,4 @@
 import React from "react";
-import MyForm from "./MyForm";
 import FormToggle from "./FormToggle";
 
 const index = () => {

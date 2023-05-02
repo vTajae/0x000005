@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Container, Grid, Button, Typography, Paper } from '@mui/material';
+import { Container, Grid, Button, Typography, Paper, Box, CardMedia } from '@mui/material';
+import { Image } from '@mui/icons-material';
 
 export const HeroSection = styled.section`
   position: relative;
@@ -21,7 +22,17 @@ export const HeroSection = styled.section`
   }
 `;
 
-export const VideoBackground = styled.video`
+// export const VideoBackground = styled.video`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   z-index: -1;
+// `;
+
+export const PhotoBackground = styled.img`
   position: absolute;
   top: 0;
   left: 0;
@@ -32,11 +43,23 @@ export const VideoBackground = styled.video`
 `;
 
 
+export const VideoBackground = styled(CardMedia)({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  zIndex: -1,
+});
+
+
+
+
 export const Title = styled.h1`
-  font-size: 64px;
+  font-size: 6rem;
   font-weight: bold;
   color: #fff;
-  margin-bottom: 24px;
 
   @media screen and (max-width: 768px) {
     font-size: 48px;
@@ -75,4 +98,29 @@ export const HeaderWording = styled(Grid)`
 z-index: 2;
 position: relative;
 text-align: center;
+align-items: center;
+`;
+
+export const HomeWrapper = styled(Grid)`
+
+`;
+
+export const HomeSection1 = styled(Grid)({
+  background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+  color: "white",
+  height: "100vh",
+  padding: "0 16px",
+  textAlign: "center",
+});
+
+export const HomeSection2 = styled(Grid)({
+  background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+  color: "white",
+  height: "100vh",
+  padding: "0 16px",
+  textAlign: "center",
+});
+
+export const HeaderImg = styled.img`
+width: 100%;
 `;
