@@ -20,7 +20,6 @@ const textFieldProps = ({ field, formik, fieldProps }) => ({
 
 const ApplicationForm = ({
   expanded,
-  formTitle,
   formData,
   validationRules,
   fieldProperties,

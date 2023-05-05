@@ -86,6 +86,7 @@ const ApplicationForm = React.memo(
         selectedPlace,
         handleAutocompleteChange,
         setSearch,
+        formatPhoneNumber,
       ]
     );
 

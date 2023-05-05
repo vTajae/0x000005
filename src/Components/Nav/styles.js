@@ -32,23 +32,25 @@ export const MainNav = styled.nav`
   }
 `;
 
-export const NavLink = styled(Link)`
-  margin: 0;
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  height: 100%;
-
-  &.navActive {
-    color: #000;
-  }
-`;
-
 export const NavWrapper = styled(Grid)`
   height: 100%;
   align-items: center;
+
 `;
 
+export const NavLink = styled(Link)`
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+
+  font-weight: bold;
+  height: 100%;
+
+  &:hover,
+  &.active {
+    background-color: #555;
+  }
+`;
 
 export const StyledNavLink = styled(Link).attrs(() => ({
   role: "button",
@@ -65,11 +67,15 @@ export const StyledNavLink = styled(Link).attrs(() => ({
   color: #333;
   font-weight: bold;
 
-  &.navActive {
-    color: #000;
+  &:hover,
+  &.active {
+    background-color: #555;
   }
 `;
 
-export const RegularNav = styled(Grid)`
-  /* Add any styles for the regular navbar here */
-`;
+export const RegularNav = styled(Grid)({
+  display: "flex",
+  height: "inherit",
+  alignItems: "stretch",
+  alignContent: "center",
+});

@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { Grid, Stack, List, Drawer, Link } from "@mui/material";
+import { Grid, Drawer, Link, Container, Box } from "@mui/material";
+import { animated } from '@react-spring/web';
+
 
 export const StyledDrawer = styled(Drawer)`
   test-align: center;
@@ -12,12 +14,23 @@ export const StyledDrawer = styled(Drawer)`
   }
 `;
 
-export const MainHeader = styled.div`
-  background-color: transparent
-  ;
-  padding: 1rem;
-  min-width: 250px;
+export const HeaderWrapper = styled(animated.header)`
+  position: sticky;
+  width: 100%;
+  z-index: 1000;
+`;
 
+export const MainHeaderHome = styled(Box)`
+  padding: 1rem 0;
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  background: linear-gradient(to bottom right, #adceff, #ffffff, #000000, #caf7ef, #acfbe0);
+  color: #fff; /* set text color to white or another light color */
+`;
+
+export const MainHeader = styled(MainHeaderHome)`
+position: relative;
 
 `;
 
@@ -52,22 +65,17 @@ export const NavbarImage = styled.div`
   }
 `;
 
-
 export const StyledGrid = styled(Grid)`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  
 `;
 
-export const StyledGridChild = styled(Grid)`
-`;
+export const StyledGridChild = styled(Grid)``;
 
 export const StyledLink = styled(Link)`
-color: #000;
+  color: #000;
 `;
-
-
 
 export const MyIcons = styled(Grid)``;
 
@@ -80,4 +88,3 @@ export const Logo = styled.img`
     width: 75px;
   }
 `;
-

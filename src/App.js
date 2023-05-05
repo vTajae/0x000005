@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-  Outlet,
+  useLocation,
 } from "react-router-dom";
 import {
   ApolloClient,
@@ -24,9 +23,9 @@ import Registration from "./Components/Registration";
 import Contact from "./Components/Contact";
 import PageContent from "./Components/PageContent";
 import NotFoundPage from "./Components/NotFound";
-import PasswordProtectedPage from "./Components/PasswordPage";
 import Login from "./Components/Login";
 import About from "./Components/About";
+import "./App.scss";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -50,12 +49,13 @@ const client = new ApolloClient({
 // Create an authentication context
 const AuthContext = createContext();
 
-function Authenticated({ isAuthenticated }) {
-  if (!isAuthenticated) {
-    return <Navigate to="/password-protected-page" replace />;
-  }
+function withLocation(Component) {
+  return function WithLocation(props) {
+    const location = useLocation();
+    const isHome = location.pathname === "/";
 
-  return <Outlet />;
+    return <Component isHome={isHome} {...props} />;
+  };
 }
 
 function App() {
@@ -69,34 +69,26 @@ function App() {
     }
   };
 
+  const ConditionalHeader = withLocation(Header);
+
   return (
     <AuthContext.Provider value={{ isAuthenticated, handleAuthentication }}>
       <ApolloProvider client={client}>
         <Router>
           <Provider store={store}>
-            <Header>
+            <ConditionalHeader>
               <Nav />
-            </Header>
+            </ConditionalHeader>
             <PageContent>
               <Routes>
-                {/* <Route
-                  path="/"
-                  element={<Authenticated isAuthenticated={isAuthenticated} />}
-                > */}
-                  <Route index element={<Home />} />
-                  <Route path="/registration" element={<Registration />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/about" element={<About />} />
-                {/* </Route> */}
-                {/* <Route
-                  path="/password-protected-page"
-                  element={<PasswordProtectedPage onAuthentication={handleAuthentication} />}
-                /> */}
+                <Route path="/" element={<Home />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/about" element={<About />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </PageContent>
-
             <Footer />
           </Provider>
         </Router>
@@ -104,6 +96,5 @@ function App() {
     </AuthContext.Provider>
   );
 }
-
 
 export default App;

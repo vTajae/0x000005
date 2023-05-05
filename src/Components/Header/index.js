@@ -1,14 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
 import coverImage from "../../assets/logo.svg";
-import { MainHeader, StyledGrid, StyledDrawer, Logo } from "./styles";
-import { Grid, IconButton, Drawer, Typography, Box } from "@mui/material";
+import {
+  MainHeader,
+  StyledGrid,
+  StyledDrawer,
+  Logo,
+  MainHeaderHome,
+  HeaderWrapper
+} from "./styles";
+import { Grid, IconButton, Typography, Box } from "@mui/material";
 import AppsIcon from "@mui/icons-material/Apps";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useSpring } from "@react-spring/web";
+import { withRouter } from "react-router-dom";
 
 function Header(props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const headerRef = useRef(null);
+  const [animation, setAnimation] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -16,39 +26,47 @@ function Header(props) {
 
   const smallScreen = useMediaQuery("(max-width:900px)");
 
+  const animationProps = useSpring({
+    opacity: animation ? 1 : 0,
+    transform: animation ? "translateY(0)" : "translateY(-5rem)",
+  });
+
   useEffect(() => {
-    let requestId;
-
     const handleScroll = () => {
-      if (headerRef.current) {
-        const { height } = headerRef.current.getBoundingClientRect();
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const newScrollY = Math.max(0, scrollTop - height);
-        setScrollY(newScrollY);
+      const currentScrollPos = window.pageYOffset;
+      if (currentScrollPos > prevScrollPos) {
+        setAnimation(false);
+      } else {
+        setAnimation(true);
       }
-    };
-
-    const updateAnimation = () => {
-      if (headerRef.current) {
-        headerRef.current.style.transform = `translateY(-${scrollY}px)`;
-        requestId = window.requestAnimationFrame(updateAnimation);
-      }
+      setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    requestId = window.requestAnimationFrame(updateAnimation);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.cancelAnimationFrame(requestId);
     };
-  }, [scrollY]);
+  }, [prevScrollPos]);
+
+  const ConditionalHeader1 = ({ isHome, children }) => {
+    const HeaderComponent = isHome ? MainHeaderHome : MainHeader;
+
+    return (
+      <HeaderComponent>
+        {/* header content */}
+        {children}
+      </HeaderComponent>
+    );
+  };
 
   return (
-    <header ref={headerRef}>
-      <MainHeader>
+    <HeaderWrapper
+      ref={headerRef}
+      className={props.className}
+      style={animationProps}
+    >
+      <ConditionalHeader1 isHome={props.isHome}>
         {smallScreen ? (
           <StyledGrid container spacing={1}>
             <Grid item xs={7} sm={4}>
@@ -85,8 +103,8 @@ function Header(props) {
             </Grid>
           </StyledGrid>
         )}
-      </MainHeader>
-    </header>
+      </ConditionalHeader1>
+    </HeaderWrapper>
   );
 }
 

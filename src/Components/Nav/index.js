@@ -18,19 +18,19 @@ export const Nav = () => {
         <>
           {/* Render mobile navbar for screens up to 900px */}
           {isMobile && (
-            <Grid container spacing={1}>
+            <NavWrapper container spacing={1}>
               <Grid item xs={12}>
                 <NavLink to="/home">Home</NavLink>
               </Grid>
               <Grid item xs={12}>
                 <NavLink to="/registration">Registration</NavLink>
               </Grid>
-            </Grid>
+            </NavWrapper>
           )}
 
           {/* Render regular navbar for screens above 900px */}
           {!isMobile && (
-            <RegularNav container spacing={1}>
+            <RegularNav container spacing={1} alignItems="stretch">
               <Grid item xs={12} md={2}>
                 <NavLink to="/home">Home</NavLink>
               </Grid>
@@ -48,9 +48,7 @@ export const Nav = () => {
           {isMobile && (
             <NavWrapper container alignItems="stretch">
               <Grid item xs={12}>
-                <StyledNavLink exact to="/">
-                  Home
-                </StyledNavLink>
+                <StyledNavLink to="/">Home</StyledNavLink>
               </Grid>
               <Grid item xs={12}>
                 <StyledNavLink to="/about">About Us</StyledNavLink>
@@ -97,5 +95,7 @@ export const Nav = () => {
 
   return <MainNav>{showNavigation()}</MainNav>;
 };
+
+
 
 export default Nav;

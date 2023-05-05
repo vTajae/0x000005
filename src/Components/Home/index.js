@@ -1,25 +1,12 @@
 import React from "react";
-import { Container, Grid, Button, Typography, Stack } from "@mui/material";
+import { Grid, Button, Typography, Stack } from "@mui/material";
+import PropTypes from "prop-types";
+
 import {
   HomeWrapper,
   Title,
-  Subtitle,
-  ButtonWrapper,
-  StyledButton,
-} from "./styles";
-import {
-  Navbar,
-  HeroSection,
-  VideoBackground,
-  PhotoBackground,
-} from "./styles";
-import {
-  TextCard,
-  TitleCard,
-  IconWrapper,
-  StyledPaper,
-  HeaderWording,
-  HeaderImg,
+  Overlay,
+  HeroSectionWrapper,
 } from "./styles";
 // import { homeSections }  from "./data.js";
 import { HomeSection1, HomeSection2 } from "./styles";
@@ -27,21 +14,33 @@ import HeroImg from "../../../src/assets/test.jpg";
 
 import coverImage from "../../assets/logo.svg";
 
+const HeroSection = ({ background, title }) => (
+  <HeroSectionWrapper background={background}>
+    <Overlay>
+      <Stack spacing={2}>
+        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid item xs={12} md={6}>
+            <Title variant="h1">{title}</Title>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <img src={coverImage} alt="logo" />
+          </Grid>
+        </Grid>
+      </Stack>
+    </Overlay>
+  </HeroSectionWrapper>
+);
+
+HeroSection.propTypes = {
+  background: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
 const Home = () => {
   return (
     <HomeWrapper container>
       <Grid item xs={12}>
-        <HeroSection>
-          <PhotoBackground src={HeroImg} alt="hero" />
-          <HeaderWording container>
-            <Grid item xs={12} md={6}>
-              <Title variant="h1">Driven By YOU</Title>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <HeaderImg src={coverImage} alt="logo" />
-            </Grid>
-          </HeaderWording>
-        </HeroSection>
+        <HeroSection background={HeroImg} title="Welcome to the Home Page" />
       </Grid>
       <Grid item xs={12}>
         <HomeSection1 container alignItems="center" justifyContent="center">
