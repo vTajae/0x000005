@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Grid, Drawer, Link, Container, Box } from "@mui/material";
+import { Grid, Drawer, Link, Box } from "@mui/material";
 import { animated } from '@react-spring/web';
 
 
@@ -17,17 +17,18 @@ export const StyledDrawer = styled(Drawer)`
 export const HeaderWrapper = styled(animated.header)`
   position: sticky;
   width: 100%;
+  top: 0;
   z-index: 1000;
 `;
 
 export const MainHeaderHome = styled(Box)`
   padding: 1rem 0;
   position: fixed;
-  background-color: transparent;
+  top: 0;
+  left: 0;
   width: 100%;
-  background: linear-gradient(to bottom right, #adceff, #ffffff, #000000, #caf7ef, #acfbe0);
-  color: #fff; /* set text color to white or another light color */
-`;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 80%, rgba(0,212,255,0) 100%);  
+  `;
 
 export const MainHeader = styled(MainHeaderHome)`
 position: relative;
@@ -80,11 +81,5 @@ export const StyledLink = styled(Link)`
 export const MyIcons = styled(Grid)``;
 
 export const Logo = styled.img`
-  @media (max-width: 600px) {
-    width: 65px;
-  }
-
-  @media (min-width: 600px) {
-    width: 75px;
-  }
+width: 65px;
 `;

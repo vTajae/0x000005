@@ -15,9 +15,8 @@ export const Overlay = styled('div')`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const Title = styled(Typography)`
@@ -46,5 +45,9 @@ export const HomeSection2 = styled(Grid)({
   textAlign: "center",
 });
 
+export const HeroLogo = styled('img')`
+width: 100%;
+height: auto;
 
+`;
 

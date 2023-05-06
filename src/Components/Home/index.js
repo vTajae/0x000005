@@ -1,32 +1,27 @@
 import React from "react";
 import { Grid, Button, Typography, Stack } from "@mui/material";
 import PropTypes from "prop-types";
-
-import {
-  HomeWrapper,
-  Title,
-  Overlay,
-  HeroSectionWrapper,
-} from "./styles";
-// import { homeSections }  from "./data.js";
+import { HomeWrapper, Title, Overlay, HeroSectionWrapper } from "./styles";
+import { HeroSectionData } from "./data.js";
 import { HomeSection1, HomeSection2 } from "./styles";
-import HeroImg from "../../../src/assets/test.jpg";
-
 import coverImage from "../../assets/logo.svg";
+import { HeroLogo } from "./styles";
 
-const HeroSection = ({ background, title }) => (
-  <HeroSectionWrapper background={background}>
+const HeroSection = ({ title, background }) => (
+  <HeroSectionWrapper style={{ background: background }}>
+     { console.log(background)}
+
     <Overlay>
-      <Stack spacing={2}>
-        <Grid container justifyContent="center" alignItems="center" spacing={2}>
-          <Grid item xs={12} md={6}>
+      <Grid container justifyContent="center" alignItems="center" spacing={2}>
+        <Grid item xs={12} md={6}>
+          <Stack spacing={2}>
             <Title variant="h1">{title}</Title>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <img src={coverImage} alt="logo" />
-          </Grid>
+          </Stack>
         </Grid>
-      </Stack>
+        <Grid item xs={12} md={6}>
+          <HeroLogo src={coverImage} alt="logo" />
+        </Grid>
+      </Grid>
     </Overlay>
   </HeroSectionWrapper>
 );
@@ -40,7 +35,9 @@ const Home = () => {
   return (
     <HomeWrapper container>
       <Grid item xs={12}>
-        <HeroSection background={HeroImg} title="Welcome to the Home Page" />
+      {HeroSectionData.map((section, index) => (
+        <HeroSection key={index} background={section.background} title={section.title} />
+      ))}
       </Grid>
       <Grid item xs={12}>
         <HomeSection1 container alignItems="center" justifyContent="center">
