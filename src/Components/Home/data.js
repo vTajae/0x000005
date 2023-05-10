@@ -1,4 +1,6 @@
-import HeroPic from "../../../src/assets/test.jpg"
+import HeroPic from "../../../src/assets/test.jpg";
+import coverImage from "../../assets/HeroLogo.svg";
+
 
 export const homeSections = [
     {
@@ -17,8 +19,9 @@ export const homeSections = [
 
 export const HeroSectionData = [
     {
-        "background": `url(${(HeroPic)}) cover bottom`,
-        "title": "Welcome to the Home Page"
+        "background": `url(${HeroPic}) no-repeat center center / cover`,
+        "title": "Welcome to the Home Page",
+        "coverImage": coverImage,
     }
 ];
 
