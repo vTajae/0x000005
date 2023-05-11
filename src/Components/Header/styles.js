@@ -15,10 +15,10 @@ export const StyledDrawer = styled(Drawer)`
 `;
 
 export const HeaderWrapper = styled(animated.header)`
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
 `;
 
 export const MainHeaderHome = styled(Box)`

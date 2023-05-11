@@ -8,18 +8,12 @@ import { HeroLogo } from "./styles";
 import { useSpring, animated } from "@react-spring/web";
 
 const HeroSection = ({ title, background, coverImage }) => {
-  // Define the animation properties
-  const { x } = useSpring({
-    from: { x: 0 },
-    to: { x: 1 },
-    config: { duration: 300 },
-    reset: true,
-    reverse: true,
-    loop: true,
+  const svgAnimation = useSpring({
+    from: { scale: 1, rotateZ: -10},
+    to: { scale: 1.1, rotateZ: 10 },
+    config: { tension: 300, friction: 20, mass: 1, duration: 3000 },
+    loop: { reverse: true }, // use the "reverse" option in the "loop" object
   });
-
-  // Use the animated component to animate the HeroLogo
-  const AnimatedHeroLogo = animated(HeroLogo);
 
   return (
     <HeroSectionWrapper style={{ background }}>
@@ -31,15 +25,8 @@ const HeroSection = ({ title, background, coverImage }) => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <AnimatedHeroLogo
-              style={{
-                transform: x
-                  .to({
-                    range: [0, 0.25, 0.75, 1],
-                    output: [0, -10, 10, 0],
-                  })
-                  .to((x) => `translate3d(0, ${x}px, 0)`),
-              }}
+            <animated.img
+              style={svgAnimation}
               src={coverImage}
               alt="logo"
             />

@@ -1,6 +1,7 @@
 
 import { styled } from '@mui/material/styles';
 import { Grid, Typography } from '@mui/material';
+import { animated } from '@react-spring/web';
 
 export const HeroSectionWrapper = styled('section')(({ background }) => `
   position: relative;
@@ -45,7 +46,7 @@ export const HomeSection2 = styled(Grid)({
   textAlign: "center",
 });
 
-export const HeroLogo = styled('img')`
+export const HeroLogo = styled(animated.svg)`
 width: 100%;
 height: auto;
 
