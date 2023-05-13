@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { validateEmail } from '../../utils/helpers';
+import { StyledBox } from '../Login/styles';
 
 function Contact() {
   const [formState, setFormState] = useState({
@@ -42,6 +43,7 @@ function Contact() {
 
   return (
     <section>
+      <StyledBox>
       <form id="contact-form" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
@@ -77,6 +79,7 @@ function Contact() {
         )}
         <button type="submit">Submit</button>
       </form>
+      </StyledBox>
     </section>
   );
 }

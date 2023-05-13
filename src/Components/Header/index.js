@@ -51,6 +51,14 @@ function Header(props) {
     if (scrollPosition !== prevScrollPosition) {
       if (scrollPosition <= 0) {
         setAnimation(1);
+        headerRef.current.style.position = "fixed";
+        headerRef.current.style.top = "0";
+      } else if (scrollPosition < prevScrollPosition) {
+        setAnimation(1);
+        if (headerRef.current.style.position === "relative") {
+          headerRef.current.style.position = "fixed";
+          headerRef.current.style.top = "0";
+        }
       } else {
         setAnimation(0);
       }

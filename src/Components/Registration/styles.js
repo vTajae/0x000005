@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TextField } from "@mui/material";
+import { TextField, Box, Container, Stack, } from "@mui/material";
 
 export const Form = styled.form`
   padding: 20px;
@@ -42,3 +42,14 @@ export const SubmitButton = styled.button`
 `;
 
 
+export const RegistrationWrapper = styled(Box)({
+  padding: "0 0 5% 0",
+  // backgroundColor: "#f5f5f5",
+
+});
+
+
+export const StyledBox = styled(Box)({
+  padding: "4rem 1rem",
+  margin: "0 auto",
+});

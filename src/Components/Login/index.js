@@ -6,6 +6,7 @@ import {
   InputWrapper,
   StyledButton,
   StyledTextField,
+  StyledBox
 } from "./styles";
 
 const Login = () => {
@@ -26,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <StyledLogin>
+    <StyledBox>
       <LoginWrapper>
         <h2>Login</h2>
         <FormWrapper onSubmit={handleSubmit}>
@@ -55,7 +56,7 @@ const Login = () => {
           </StyledButton>
         </FormWrapper>
       </LoginWrapper>
-    </StyledLogin>
+    </StyledBox>
   );
 };
 

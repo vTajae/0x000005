@@ -16,7 +16,7 @@ const HeroSection = ({ title, background, coverImage }) => {
   });
 
   return (
-    <HeroSectionWrapper style={{ background }}>
+    <HeroSectionWrapper style={{ background, backgroundColor: "#fffff" }}>
       <Overlay>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item xs={12} md={6}>

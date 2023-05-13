@@ -19,7 +19,9 @@ export const homeSections = [
 
 export const HeroSectionData = [
     {
-        "background": `url(${HeroPic}) no-repeat center center / cover`,
+        // "background": `url(${HeroPic}) no-repeat center center / cover`,
+
+        "background": ``,
         "title": "Welcome to the Home Page",
         "coverImage": coverImage,
     }

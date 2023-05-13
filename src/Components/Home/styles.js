@@ -9,19 +9,28 @@ export const HeroSectionWrapper = styled('section')(({ background }) => `
   height: 100vh;
   background: url(${background}) no-repeat center center;
   background-size: cover;
+  color: black;
 `);
+
+// export const Overlay = styled('div')`
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   z-index: 1;
+//   display: flex;
+// `;
 
 export const Overlay = styled('div')`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
   z-index: 1;
   display: flex;
 `;
 
 export const Title = styled(Typography)`
-  color: #ffffff;
   font-size: 3rem;
   text-align: center;
 `;

@@ -1,12 +1,12 @@
 import styled from "@mui/styled-engine";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 
-export const StyledLogin = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  marginTop: "50px",
+import { TextField, Box, Container, Stack, Button, } from "@mui/material";
+
+
+
+export const StyledBox = styled(Box)({
+  padding: "4rem 2.5rem",
+  margin: "0 auto",
 });
 
 export const LoginWrapper = styled("div")({
