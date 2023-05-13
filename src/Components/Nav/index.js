@@ -72,9 +72,6 @@ export const Nav = () => {
                 <NavLink to="/">Home</NavLink>
               </Grid>
               <Grid item xs={12} md={2}>
-                <NavLink to="/sandbox">Sandbox</NavLink>
-              </Grid>
-              <Grid item xs={12} md={2}>
                 <NavLink to="/about">About</NavLink>
               </Grid>
               <Grid item xs={12} md={2}>
