@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import coverImage from "../../assets/logo.png";
 import {
   MainHeader,
@@ -15,11 +15,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 function useScrollPosition() {
   const [scrollPosition, setScrollPosition] = useState(window.pageYOffset);
 
-  useLayoutEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.pageYOffset);
-    };
+  const handleScroll = () => {
+    setScrollPosition(window.pageYOffset);
+  };
 
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -47,9 +47,13 @@ function Header(props) {
   const [prevScrollPosition, setPrevScrollPosition] = useState(scrollPosition);
   const [animation, setAnimation] = useState(1); // initially set to 1
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (scrollPosition !== prevScrollPosition) {
-      setAnimation(scrollPosition < prevScrollPosition ? 1 : 0);
+      if (scrollPosition <= 0) {
+        setAnimation(1);
+      } else {
+        setAnimation(0);
+      }
       setPrevScrollPosition(scrollPosition);
     }
   }, [scrollPosition, prevScrollPosition]);
