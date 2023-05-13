@@ -13,7 +13,7 @@ import AppsIcon from "@mui/icons-material/Apps";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 function useScrollPosition() {
-  const [scrollPosition, setScrollPosition] = useState(null);
+  const [scrollPosition, setScrollPosition] = useState(window.pageYOffset);
 
   useLayoutEffect(() => {
     const handleScroll = () => {
@@ -44,19 +44,15 @@ function Header(props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const headerRef = useRef(null);
   const scrollPosition = useScrollPosition();
-
+  const [prevScrollPosition, setPrevScrollPosition] = useState(scrollPosition);
   const [animation, setAnimation] = useState(1); // initially set to 1
 
   useLayoutEffect(() => {
-    if (scrollPosition !== null) {
-      setAnimation(scrollPosition > 0 ? 0 : 1);
-      if (scrollPosition > 0) {
-        headerRef.current.style.position = "fixed";
-      } else {
-        headerRef.current.style.position = "relative";
-      }
+    if (scrollPosition !== prevScrollPosition) {
+      setAnimation(scrollPosition < prevScrollPosition ? 1 : 0);
+      setPrevScrollPosition(scrollPosition);
     }
-  }, [scrollPosition]);
+  }, [scrollPosition, prevScrollPosition]);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -65,7 +61,11 @@ function Header(props) {
   const smallScreen = useMediaQuery("(max-width:900px)");
 
   return (
-    <HeaderWrapper ref={headerRef} style={{ opacity: animation }}>
+    <HeaderWrapper
+      ref={headerRef}
+      className={props.className}
+      style={{ opacity: animation, transition: "opacity 0.3s ease" }}
+    >
       <ConditionalHeader1 isHome={props.isHome}>
         {smallScreen ? (
           <StyledGrid container spacing={1}>
@@ -120,4 +120,3 @@ function Header(props) {
 }
 
 export default Header;
-
