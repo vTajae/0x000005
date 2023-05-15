@@ -28,12 +28,16 @@ export const HomeSection1Data = [
   {
     title: "Begin Your Journey Today",
     subtitle: "Seeking answers? We're here to build solutions that propel you forward!",
+    animatedTitle1: "Unleash Your Potential",
+    animatedTitle2: "Ignite Your Curiosity",
   },
 ];
 
 export const HomeSection2Data = [
   {
-    title: "Begin Your Journey Today",
-    subtitle: "Seeking answers? We're here to build solutions that propel you forward!",
+    title: "Latest",
+    subtitle: "Stay up to date with the latest news and updates from the team.",
+    animatedTitle1: "Post 1",
+    animatedTitle2: "Post 2",
   },
 ];

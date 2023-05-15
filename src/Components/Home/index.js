@@ -39,7 +39,7 @@ HeroSection.propTypes = {
   coverImage: PropTypes.string.isRequired,
 };
 
-const HomeSection1 = ({ title, subtitle }) => {
+const HomeSection1 = ({ title, subtitle, animatedTitle1, animatedTitle2 }) => {
   const svgAnimation = useSpring({
     from: { scale: 1, rotateZ: -10 },
     to: { scale: 1.1, rotateZ: 10 },
@@ -51,19 +51,20 @@ const HomeSection1 = ({ title, subtitle }) => {
     <HomeSection1Wrapper container alignItems="center" justifyContent="center">
       <Stack spacing={2}>
         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-          {title}{" "}
+          {title}
         </Typography>
         <Typography variant="h5">{subtitle}</Typography>
         <AnimatedSection>
           {/* Add your animated content for the first section */}
           <Typography variant="h3" color="primary">
-            Unleash Your Potential
+            {animatedTitle1}
           </Typography>
         </AnimatedSection>
         <AnimatedSection>
           {/* Add your animated content for the second section */}
           <Typography variant="h3" color="secondary">
-            Ignite Your Curiosity
+            {animatedTitle2}
+
           </Typography>
         </AnimatedSection>
       </Stack>
@@ -74,9 +75,11 @@ const HomeSection1 = ({ title, subtitle }) => {
 HomeSection1.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  animatedTitle1: PropTypes.string.isRequired,
+  animatedTitle2: PropTypes.string.isRequired,
 };
 
-const HomeSection2 = ({ title, subtitle }) => {
+const HomeSection2 = ({ title, subtitle, animatedTitle1, animatedTitle2 }) => {
   const svgAnimation = useSpring({
     from: { scale: 1, rotateZ: -10 },
     to: { scale: 1.1, rotateZ: 10 },
@@ -94,13 +97,14 @@ const HomeSection2 = ({ title, subtitle }) => {
         <AnimatedSection>
           {/* Add your animated content for the first section */}
           <Typography variant="h3" color="primary">
-            Unleash Your Potential
+            {animatedTitle1}
           </Typography>
         </AnimatedSection>
         <AnimatedSection>
           {/* Add your animated content for the second section */}
           <Typography variant="h3" color="secondary">
-            Ignite Your Curiosity
+            {animatedTitle2}
+
           </Typography>
         </AnimatedSection>
       </Stack>
@@ -111,6 +115,8 @@ const HomeSection2 = ({ title, subtitle }) => {
 HomeSection2.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  animatedTitle1: PropTypes.string.isRequired,
+  animatedTitle2: PropTypes.string.isRequired,
 };
 
 const Home = () => {
@@ -132,6 +138,8 @@ const Home = () => {
             key={index}
             title={section.title}
             subtitle={section.subtitle}
+            animatedTitle1={section.animatedTitle1}
+            animatedTitle2={section.animatedTitle2}
           />
         ))}
       </Grid>
@@ -141,6 +149,8 @@ const Home = () => {
             key={index}
             title={section.title}
             subtitle={section.subtitle}
+            animatedTitle1={section.animatedTitle1}
+            animatedTitle2={section.animatedTitle2}
           />
         ))}
       </Grid>

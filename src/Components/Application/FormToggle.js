@@ -3,7 +3,7 @@ import ApplicationForm from "./ApplicationForm";
 import IconButton from "@mui/material/IconButton";
 import styled from "@mui/material/styles/styled";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Grid, Typography, Container, Card, CardActions, Collapse, Stack } from "@mui/material";
+import { Grid, Typography, Container, Card, CardActions, Collapse } from "@mui/material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,7 +29,7 @@ const FormToggle = ({
   };
 
   return (
-        <Card>
+        <Card elevation={0}>
           <CardActions disableSpacing>
             <Grid container justifyContent="space-between" alignItems="center">
               <Grid item xs={10} sm={11}>

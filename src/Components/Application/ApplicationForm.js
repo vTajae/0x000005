@@ -95,7 +95,7 @@ const ApplicationForm = React.memo(
         <Grid container spacing={3}>
           {fields}
           <Grid item xs={12}>
-            <SubmitButton variant="contained" color="primary" type="submit">
+            <SubmitButton type="submit">
               Submit
             </SubmitButton>
           </Grid>

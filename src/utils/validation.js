@@ -27,26 +27,26 @@ export const companyValidationRules = {
 };
 
 export const parentValidationRules = {
-  ParentName: {
+  Name: {
     required: true,
     pattern: /^[a-zA-Z ,.]{1,20}$/,
     errorMessage: "Special Characters Not Allowed",
   },
-  ParentPhone: {
+  Phone: {
     required: true,
     pattern: /^\d{3}-\d{3}-\d{4}$/,
     errorMessage: "Invalid phone number (format: 123-456-7890)",
   },
-  ParentEmail: {
+  Email: {
     required: true,
     pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
     errorMessage: "Invalid email address (format: Example@Email.com)",
   },
-  ParentAddress: {
+  Address: {
     required: true,
     errorMessage: "Address is required",
   },
-  ParentDescription: {
+  Description: {
     required: true,
     errorMessage: "Description is required",
   },

@@ -26,7 +26,7 @@ export const Overlay = styled('div')`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(173,242,230,1) 27%, rgba(255,255,255,1) 97%);
+  background: linear-gradient(to top, rgba(173,242,230,1) 4%, rgba(255,255,255,1) 52%);
   z-index: 1;
   display: flex;
 `;

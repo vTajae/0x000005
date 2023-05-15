@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TextField, Box, Container, Stack, } from "@mui/material";
+import { TextField, Box, Button, Stack, } from "@mui/material";
 
 export const Form = styled.form`
   padding: 20px;
@@ -32,13 +32,17 @@ export const TextFieldWrapper = styled(TextField)`
   }
 `;
 
-export const SubmitButton = styled.button`
-  background-color: #0077c8;
-  color: white;
-  &:hover {
+//Create Theme coming soon...
+
+export const SubmitButton = styled(Button)`
+  &.MuiButton-root {
     background-color: #0077c8;
+    color: white;
+    margin-top: 20px;
+    &:hover {
+      background-color: #00ffc4;
+    }
   }
-  margin-top: 20px;
 `;
 
 
