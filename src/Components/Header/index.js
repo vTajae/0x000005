@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef, memo } from 'react';
+import { useScroll, useSpring } from '@react-spring/web';
 import coverImage from "../../assets/logo.png";
 import {
   MainHeader,
@@ -13,23 +14,23 @@ import AppsIcon from "@mui/icons-material/Apps";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 function useScrollPosition() {
-  const [scrollPosition, setScrollPosition] = useState(window.pageYOffset);
-
-  const handleScroll = () => {
-    setScrollPosition(window.pageYOffset);
-  };
+  const [scrollPosition, setScrollPosition] = useState(null);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setScrollPosition(window.pageYOffset);
+    };
+
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return scrollPosition;
 }
 
-const ConditionalHeader1 = React.memo(({ isHome, children }) => {
+const ConditionalHeader1 = memo(({ isHome, children }) => {
   const HeaderComponent = isHome ? MainHeaderHome : MainHeader;
 
   return (
@@ -40,31 +41,36 @@ const ConditionalHeader1 = React.memo(({ isHome, children }) => {
   );
 });
 
-function Header(props) {
+const Header = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const headerRef = useRef(null);
+  const { scrollY } = useScroll();
   const scrollPosition = useScrollPosition();
-  const [prevScrollPosition, setPrevScrollPosition] = useState(scrollPosition);
-  const [animation, setAnimation] = useState(1); // initially set to 1
+  const [scrollDirection, setScrollDirection] = useState('up');
+  const [lastScrollY, setLastScrollY] = useState(scrollY.get()); // Set initial lastScrollY to current scroll position
+
+  const navbarStyles = useSpring({
+    opacity: scrollDirection === 'up' || scrollPosition === 0 ? 1 : 0,
+    transform: scrollDirection === 'up' || scrollPosition === 0 ? 'translateY(0%)' : 'translateY(-100%)',
+  });
+
+  const headerRef = useRef(null);
 
   useEffect(() => {
-    if (scrollPosition !== prevScrollPosition) {
-      if (scrollPosition <= 0) {
-        setAnimation(1);
-        headerRef.current.style.position = "fixed";
-        headerRef.current.style.top = "0";
-      } else if (scrollPosition < prevScrollPosition) {
-        setAnimation(1);
-        if (headerRef.current.style.position === "relative") {
-          headerRef.current.style.position = "fixed";
-          headerRef.current.style.top = "0";
-        }
-      } else {
-        setAnimation(0);
+    if (scrollPosition !== null) {
+      if (scrollPosition > lastScrollY) {
+        setScrollDirection('down');
+      } else if (scrollPosition < lastScrollY) {
+        setScrollDirection('up');
       }
-      setPrevScrollPosition(scrollPosition);
+      setLastScrollY(scrollPosition);
+
+      // if (scrollPosition > 0) {
+      //   headerRef.current.style.position = 'fixed';
+      // } else {
+      //   headerRef.current.style.position = 'relative';
+      // }
     }
-  }, [scrollPosition, prevScrollPosition]);
+  }, [scrollPosition, lastScrollY]);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -73,11 +79,7 @@ function Header(props) {
   const smallScreen = useMediaQuery("(max-width:900px)");
 
   return (
-    <HeaderWrapper
-      ref={headerRef}
-      className={props.className}
-      style={{ opacity: animation, transition: "opacity 0.3s ease" }}
-    >
+    <HeaderWrapper ref={headerRef} style={{ ...navbarStyles, position: 'fixed', zIndex: 1000 }}>
       <ConditionalHeader1 isHome={props.isHome}>
         {smallScreen ? (
           <StyledGrid container spacing={1}>
@@ -129,6 +131,6 @@ function Header(props) {
       </ConditionalHeader1>
     </HeaderWrapper>
   );
-}
+};
 
 export default Header;

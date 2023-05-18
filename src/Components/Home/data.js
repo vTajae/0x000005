@@ -19,6 +19,7 @@ export const homeSections = [
 export const HeroSectionData = [
   {
     // "background": `url(${HeroPic}) no-repeat center center / cover`,
+    background: ``,
     title: "Driven By You.",
     coverImage: coverImage,
   },
