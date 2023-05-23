@@ -6,7 +6,7 @@ import {
   InputWrapper,
   StyledButton,
   StyledTextField,
-  StyledBox
+  StyledBox,
 } from "./styles";
 
 const Login = () => {
@@ -23,6 +23,9 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    console.table({ "email: ": email, "password: ": password });
+
     // Handle login logic here
   };
 

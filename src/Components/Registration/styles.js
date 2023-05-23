@@ -56,4 +56,7 @@ export const RegistrationWrapper = styled(Box)({
 export const StyledBox = styled(Box)({
   padding: "4rem 1rem",
   margin: "0 auto",
+  height: "100vh",
+  background: "linear-gradient(to bottom, #ffffff 0%,#f2f9ff 13%,#daf6ff 35%,#adf2e6 67%,#f5f5f5 95%)",
+
 });

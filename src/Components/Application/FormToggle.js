@@ -22,7 +22,7 @@ const FormToggle = ({
   validationRules,
   fieldProperties,
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);

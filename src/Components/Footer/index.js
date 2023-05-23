@@ -20,7 +20,7 @@ import {
 import { FormContainer, EmailInput, SubmitButton } from "./styles";
 import "./footer.scss";
 
-function withScrolling(Component) {
+export function withScrolling(Component) {
   return function ScrollableComponent(props) {
     const [isScrolling, setIsScrolling] = useState(false);
 
@@ -38,7 +38,7 @@ function withScrolling(Component) {
   };
 }
 
-function FooterLink({ to, children, handleLinkClick }) {
+export function FooterLink({ to, children, handleLinkClick }) {
   const handleClick = () => {
     if (handleLinkClick) {
       handleLinkClick();

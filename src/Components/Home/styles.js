@@ -1,6 +1,6 @@
 
 import { styled } from '@mui/material/styles';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Box } from '@mui/material';
 import { animated } from '@react-spring/web';
 
 
@@ -41,17 +41,26 @@ export const HomeWrapper = styled(Grid)`
 
 // Home Section 1
 export const HomeSection1Wrapper = styled(Grid)({
-  background: "linear-gradient(to bottom, rgba(173,242,230,1) 4%, rgba(255,255,255,1) 52%)",
   color: "inherit",
+  backgroundColor: "transparent",
   height: "100vh",
-  padding: "0",
   textAlign: "center",
   display: "flex",
-  alignItems: "flex-start",
+  alignItems: "center",
+  padding: "0 16px",
   justifyContent: "center",
-  zIndex: -1,
   position: "relative",
+  zIndex: "0",
   });
+
+  export const HomeBackGround = styled(Box)({
+    background: "linear-gradient(to bottom, rgba(173,242,230,1) 4%, rgba(255,255,255,1) 52%)",
+    height: "100vh", 
+    width: "100vw",
+    position: "absolute",
+    zIndex: "-1",
+    });
+  
 
   // export const AnimatedSection = styled(Grid)({
   //   background: "white",
@@ -70,6 +79,7 @@ export const HomeSection1Wrapper = styled(Grid)({
 export const HomeSection2Wrapper = styled(Grid)({
   background: "linear-gradient(to top, rgba(245,245,245,1) 0%, rgba(173,242,230,1) 7%, rgba(173,242,230,1) 69%, #ADCEFF 99%)",
   color: "inherit",
+  padding: "0 16px",
   height: "100vh",
   textAlign: "center",
 });

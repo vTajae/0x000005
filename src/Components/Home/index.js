@@ -6,8 +6,7 @@ import { HeroSectionData, HomeSection1Data, HomeSection2Data } from "./data.js";
 import { HomeSection1Wrapper, HomeSection2Wrapper } from "./styles";
 import { HeroLogo, AnimatedSection } from "./styles";
 import { useSpring, animated } from "@react-spring/web";
-// import HomeSection1 from "./Section1";
-import HomeSection1 from "./Section1/7";
+import HomeSection1 from "./Section1";
 
 const HeroSection = ({ title, background, coverImage }) => {
   const svgAnimation = useSpring({

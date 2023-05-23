@@ -7,6 +7,7 @@ export const MyFooter = styled(Box)`
   text-align: center;
   padding: 2rem 0;
   background-color: #f5f5f5;
+
 `;
 
 export const StyledLink = styled(Link)`

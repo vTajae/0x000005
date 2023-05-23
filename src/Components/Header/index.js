@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, memo } from 'react';
-import { useScroll, useSpring } from '@react-spring/web';
+import React, { useState, useEffect, useRef, memo } from "react";
+import { useScroll, useSpring } from "@react-spring/web";
 import coverImage from "../../assets/logo.png";
 import {
   MainHeader,
@@ -12,6 +12,7 @@ import {
 import { Grid, IconButton, Typography, Box } from "@mui/material";
 import AppsIcon from "@mui/icons-material/Apps";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { FooterLink, withScrolling } from "../Footer";
 
 function useScrollPosition() {
   const [scrollPosition, setScrollPosition] = useState(null);
@@ -21,9 +22,9 @@ function useScrollPosition() {
       setScrollPosition(window.pageYOffset);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -45,12 +46,15 @@ const Header = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { scrollY } = useScroll();
   const scrollPosition = useScrollPosition();
-  const [scrollDirection, setScrollDirection] = useState('up');
+  const [scrollDirection, setScrollDirection] = useState("up");
   const [lastScrollY, setLastScrollY] = useState(scrollY.get()); // Set initial lastScrollY to current scroll position
 
   const navbarStyles = useSpring({
-    opacity: scrollDirection === 'up' || scrollPosition === 0 ? 1 : 0,
-    transform: scrollDirection === 'up' || scrollPosition === 0 ? 'translateY(0%)' : 'translateY(-100%)',
+    opacity: scrollDirection === "up" || scrollPosition === 0 ? 1 : 0,
+    transform:
+      scrollDirection === "up" || scrollPosition === 0
+        ? "translateY(0%)"
+        : "translateY(-100%)",
   });
 
   const headerRef = useRef(null);
@@ -58,9 +62,9 @@ const Header = (props) => {
   useEffect(() => {
     if (scrollPosition !== null) {
       if (scrollPosition > lastScrollY) {
-        setScrollDirection('down');
+        setScrollDirection("down");
       } else if (scrollPosition < lastScrollY) {
-        setScrollDirection('up');
+        setScrollDirection("up");
       }
       setLastScrollY(scrollPosition);
 
@@ -76,24 +80,44 @@ const Header = (props) => {
     setDrawerOpen(!drawerOpen);
   };
 
+  const HeaderButtonLink = withScrolling(FooterLink);
+
   const smallScreen = useMediaQuery("(max-width:900px)");
 
   return (
-    <HeaderWrapper ref={headerRef} style={{ ...navbarStyles, position: 'fixed', zIndex: 1000 }}>
+    <HeaderWrapper
+      ref={headerRef}
+      style={{ ...navbarStyles, position: "fixed", zIndex: 1000 }}
+    >
       <ConditionalHeader1 isHome={props.isHome}>
         {smallScreen ? (
           <StyledGrid container spacing={1}>
             <Grid item xs={8}>
-              <Box
-                display="flex"
-                alignItems="center"
-                style={{ padding: "0 100px" }}
+              <HeaderButtonLink
+                to={"/home"}
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  "a:visited": {
+                    color: "inherit" /* or specify the desired color */,
+                  },
+                }}
               >
-                <Logo src={coverImage} alt="logo" />
-                <Typography variant="h5" component="h1" sx={{ marginRight: 5 }}>
-                  Qias.Me
-                </Typography>
-              </Box>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  style={{ padding: "0 100px" }}
+                >
+                  <Logo src={coverImage} alt="logo" />
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{ marginRight: 5 }}
+                  >
+                    Qias.Me
+                  </Typography>
+                </Box>
+              </HeaderButtonLink>
             </Grid>
             <Grid item xs={4}>
               <Box
@@ -114,6 +138,16 @@ const Header = (props) => {
         ) : (
           <StyledGrid container>
             <Grid item xs={7} md={4}>
+            <HeaderButtonLink
+                to="/"
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  "a:visited": {
+                    color: "inherit" /* or specify the desired color */,
+                  },
+                }}
+              >
               <Box
                 display="flex"
                 alignItems="center"
@@ -122,6 +156,7 @@ const Header = (props) => {
                 <Logo src={coverImage} alt="logo" />
                 <Typography variant="h5">Qias.Me</Typography>
               </Box>
+              </HeaderButtonLink>
             </Grid>
             <Grid item xs={3} md={8}>
               {props.children}

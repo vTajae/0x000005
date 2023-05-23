@@ -6,7 +6,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { StyledCard, SectionTitle, StyledBox, AboutWrapper } from "./styles";
+import { StyledCard, SectionTitle, StyledBox, AboutWrapper, StyledBox2, StyledBox3 } from "./styles";
 import {
   whyChooseUsSectionData,
   featureSectionData,
@@ -83,7 +83,7 @@ FeatureSection.propTypes = {
 };
 
 const TestimonialSection = ({ title, testimonials }) => (
-  <StyledBox>
+  <StyledBox3>
     <SectionTitle variant="h3" align="center" color="primary">
       {title}
     </SectionTitle>
@@ -97,7 +97,7 @@ const TestimonialSection = ({ title, testimonials }) => (
         />
       ))}
     </Grid>
-  </StyledBox>
+  </StyledBox3>
 );
 
 TestimonialSection.propTypes = {
@@ -112,7 +112,7 @@ TestimonialSection.propTypes = {
 };
 
 const WhyChooseUsSection = ({ title, items }) => (
-  <StyledBox>
+  <StyledBox2>
     <SectionTitle variant="h3" align="center" color="primary">
       {title}
     </SectionTitle>
@@ -128,7 +128,7 @@ const WhyChooseUsSection = ({ title, items }) => (
         </Grid>
       ))}
     </Grid>
-  </StyledBox>
+  </StyledBox2>
 );
 
 WhyChooseUsSection.propTypes = {

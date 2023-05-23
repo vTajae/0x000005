@@ -5,24 +5,30 @@ import { TextField, Box, Container, Stack, Button, } from "@mui/material";
 
 
 export const StyledBox = styled(Box)({
-  padding: "4rem 2.5rem",
-  margin: "0 auto",
+  background: "linear-gradient(to bottom, #adceff, #a0d7ff, #99dffe, #97e6f9, #9decf1, #a8eef4, #b2f0f7, #bcf2fa, #cff1ff, #e1f1ff, #eff2fa, #f5f5f5)",  margin: "auto",
+  display: "flex",
+  height: "100vh",
+  alignItems: "center",
+  alignContent: "center",
+  justifyContent: "center",
 });
 
 export const LoginWrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  backgroundColor: "#F7F7F7",
+  backgroundColor: "white", /* Jordy Blue with 50% opacity */
+  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+  padding: "20px",
+  borderRadius: "8px",
   padding: "50px",
-  borderRadius: "10px",
-  boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.1)",
 });
 
 export const FormWrapper = styled("form")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  
   marginTop: "30px",
 });
 
