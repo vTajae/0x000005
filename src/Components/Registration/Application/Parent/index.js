@@ -1,10 +1,10 @@
 import React from "react";
-import FormToggle from "../../Application/FormToggle";
-import { companyValidationRules } from "../../../utils/validation";
+import FormToggle from "../FormToggle";
+import { parentValidationRules } from "../../../../utils/validation";
 
-const CompanyForm = () => {
+const ParentForm = () => {
 
-  const companyFormData = {
+  const parentFormData = {
     Name: "",
     Email: "",
     Phone: "", 
@@ -15,28 +15,28 @@ const CompanyForm = () => {
 
   const fieldProperties = {
     Name: {
-      name: "Company Name",
+      name: "Parent Name",
       type: "text",
       autoComplete: "off",
       placeholder: "Qias.Me LLC",
       grid: { sm: 6, lg: 3 },
     },
     Phone: {
-      name: "Company Phone",
+      name: "Parent Phone",
       type: "tel",
       autoComplete: "tel",
       placeholder: "123-457-7890",
       grid: { sm: 6, lg: 3 },
     },
     Email: {
-      name: "Company Email",
+      name: "Parent Email",
       type: "email",
       autoComplete: "email",
       placeholder: "Example@Email.com",
       grid: { sm: 6, lg: 3 },
     },
     Address: {
-      name: "Company Address",
+      name: "Parent Address",
       type: "text",
       autoComplete: "off",
       placeholder: "123 Main St, New York, New York, 12345",
@@ -51,7 +51,7 @@ const CompanyForm = () => {
       },
     },
     Description: {
-      name: "Company Description",
+      name: "Parent Description",
       type: "text",
       autoComplete: "off",
       grid: { sm: 12, lg: 12 },
@@ -62,12 +62,12 @@ const CompanyForm = () => {
 
   return (
     <FormToggle
-      formTitle="Company Registration Form"
-      formData={companyFormData}
-      validationRules={companyValidationRules}
+      formTitle="Parent Registration Form"
+      formData={parentFormData}
+      validationRules={parentValidationRules}
       fieldProperties={fieldProperties}
     />
   );
 };
 
-export default CompanyForm;
+export default ParentForm;

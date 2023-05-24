@@ -8,8 +8,8 @@ import {
   Button,
   Box
 } from "@mui/material";
-import CompanyForm from "../Application/Company";
-import ParentForm from "../Application/Parent"; 
+import CompanyForm from "./Application/Company";
+import ParentForm from "./Application/Parent"; 
 import { StyledBox } from "./styles";
 
 const RegistrationForm = () => {

@@ -4,8 +4,8 @@ import {
   Form,
   TextFieldWrapper,
   SubmitButton,
-} from "../Registration/styles.js";
-import { useValidation } from "../../utils/helpers.js";
+} from "../styles";
+import { useValidation } from "../../../utils/helpers.js";
 import { useAutocomplete, MyAutocomplete } from "./AutoComplete.js";
 
 const handleChange = (formik, name, formatPhoneNumber) => (event) => {
