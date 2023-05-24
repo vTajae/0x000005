@@ -47,14 +47,16 @@ export const Title = styled(Typography)({
 
 
 export const AnimatedButton = animated(styled(Button)(({ theme }) => ({
+  padding: "0.5rem 1rem",
   /* your button styles here */
   color: '#adceff', /* default color */
   borderColor: '#000000', /* default outline color */
-  backgroundColor: 'white', /* default background color */
+  backgroundColor: 'white',
   '&:hover': {
     color: '#adceff', /* hover color */
     borderColor: '#acfbe0', /* hover outline color */
     backgroundColor: '#acfbe0', /* hover background color */
+
   },
 })));
 

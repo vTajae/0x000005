@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Button, Typography, Stack } from "@mui/material";
+import { Grid, Button, Typography, Stack, CircularProgress } from "@mui/material";
 import PropTypes from "prop-types";
 import { HomeWrapper, Title, Overlay, HeroSectionWrapper } from "./styles";
 import { HeroSectionData, HomeSection1Data, HomeSection2Data } from "./data.js";
@@ -10,9 +10,9 @@ import HomeSection1 from "./Section1";
 
 const HeroSection = ({ title, background, coverImage }) => {
   const svgAnimation = useSpring({
-    from: { scale: 1, rotateZ: -10 },
-    to: { scale: 1.1, rotateZ: 10 },
-    config: { tension: 300, friction: 20, mass: 1, duration: 6000 },
+    from: { scale: 1, rotateZ: -2.5 },
+    to: { scale: 1.1, rotateZ: 2.5 },
+    config: { tension: 120, friction: 5, },
     loop: { reverse: true }, // use the "reverse" option in the "loop" object
   });
 
@@ -41,38 +41,66 @@ HeroSection.propTypes = {
 };
 
 
-const HomeSection2 = ({ title, subtitle, animatedTitle1, animatedTitle2 }) => {
+// const HomeSection2 = ({ title, subtitle, animatedTitle1, animatedTitle2 }) => {
+//   const svgAnimation = useSpring({
+//     from: { scale: 1, rotateZ: -10 },
+//     to: { scale: 1.1, rotateZ: 10 },
+//     config: { tension: 300, friction: 20, mass: 1, duration: 6000 },
+//     loop: { reverse: true }, // use the "reverse" option in the "loop" object
+//   });
+
+//   return (
+//     <HomeSection2Wrapper container justifyContent="center">
+//       <Stack spacing={2}>
+//         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+//           {title}
+//         </Typography>
+//         <Typography variant="h5">{subtitle}</Typography>
+//         <AnimatedSection>
+//           {/* Add your animated content for the first section */}
+//           <Typography variant="h3" color="primary">
+//             {animatedTitle1}
+//           </Typography>
+//         </AnimatedSection>
+//         <AnimatedSection>
+//           {/* Add your animated content for the second section */}
+//           <Typography variant="h3" color="secondary">
+//             {animatedTitle2}
+
+//           </Typography>
+//         </AnimatedSection>
+//       </Stack>
+//     </HomeSection2Wrapper>
+//   );
+// };
+
+
+const HomeSection2 = ({ title, subtitle }) => {
   const svgAnimation = useSpring({
     from: { scale: 1, rotateZ: -10 },
     to: { scale: 1.1, rotateZ: 10 },
     config: { tension: 300, friction: 20, mass: 1, duration: 6000 },
-    loop: { reverse: true }, // use the "reverse" option in the "loop" object
+    reverse: true,
+    loop: true,
   });
 
+
   return (
-    <HomeSection2Wrapper container alignItems="center" justifyContent="center">
+    <HomeSection2Wrapper container justifyContent="center">
       <Stack spacing={2}>
         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
           {title}
         </Typography>
         <Typography variant="h5">{subtitle}</Typography>
-        <AnimatedSection>
-          {/* Add your animated content for the first section */}
-          <Typography variant="h3" color="primary">
-            {animatedTitle1}
-          </Typography>
-        </AnimatedSection>
-        <AnimatedSection>
-          {/* Add your animated content for the second section */}
-          <Typography variant="h3" color="secondary">
-            {animatedTitle2}
-
-          </Typography>
+        <AnimatedSection style={svgAnimation}>
+          <CircularProgress size={60} thickness={4} sx={{color: "#f5f5f5"}}/> {/* Loading animation with CircularProgress */}
         </AnimatedSection>
       </Stack>
     </HomeSection2Wrapper>
   );
 };
+
+
 
 HomeSection2.propTypes = {
   title: PropTypes.string.isRequired,
@@ -105,7 +133,7 @@ const Home = () => {
           />
         ))}
       </Grid>
-      <Grid item xs={12}>
+      <Grid item  xs={12}>
         {HomeSection2Data.map((section, index) => (
           <HomeSection2
             key={index}

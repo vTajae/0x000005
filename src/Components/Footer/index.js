@@ -20,6 +20,12 @@ import {
 import { FormContainer, EmailInput, SubmitButton } from "./styles";
 import "./footer.scss";
 
+const data = {
+  address: "2909 E. Arkansas Ln. \n Suite C-#580\n Arlington, USA 76010",
+  phone: "(213) 316-8984",
+  email: "Support@Qias.me",
+};
+
 export function withScrolling(Component) {
   return function ScrollableComponent(props) {
     const [isScrolling, setIsScrolling] = useState(false);
@@ -142,10 +148,10 @@ function Footer(props) {
             <ContactFooterWrapper item xs={12} sm={4} md={4} lg={3}>
               <ScrollableContactInfo
                 address={
-                  "3422 Business Center Dr.\n Suite 100, Unit 97\n Pearland, USA 77583"
+                  data.address
                 }
-                phone="(213) 316-8984"
-                email="Support@Qias.me"
+                phone={data.phone}
+                email={data.email}
               />
             </ContactFooterWrapper>
             <Grid item xs={12} sm={4} md={4} lg={3}>

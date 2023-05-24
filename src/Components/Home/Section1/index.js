@@ -10,36 +10,51 @@ const useAnimatedStyles = (initialY) => {
   const [style, api] = useSpring(() => ({
     opacity: 0,
     y: initialY,
+    config: { tension: 120, friction: 14 },
   }));
   return [style, api];
 };
 
 const HomeSection1ButtonLink = withScrolling(FooterLink);
 
-const AnimatedButtonLink = ({ to, style, textStyles, children }) => (
-  <HomeSection1ButtonLink
-    to={to}
-    variant="h6"
-    sx={{
-      fontWeight: "bold",
-      "a:visited": {
-        color: "inherit" /* or specify the desired color */,
-      },
-    }}
-  >
-    <AnimatedButton style={style}>
-      <Title variant="h2">
-        <span>
-          <animated.span
-            style={{ transform: textStyles.y.to((y) => `translateY(${y})`) }}
-          >
-            {children}
-          </animated.span>
-        </span>
-      </Title>
-    </AnimatedButton>
-  </HomeSection1ButtonLink>
-);
+const AnimatedButtonLink = ({ to, style, textStyles, children }) => {
+  const [hovered, setHovered] = React.useState(false);
+
+  const springProps = useSpring({
+    borderRadius: hovered ? "25%" : "15%",
+    config: { tension: 500, friction: 10 },
+  });
+
+  return (
+    <HomeSection1ButtonLink
+      to={to}
+      variant="h6"
+      sx={{
+        fontWeight: "bold",
+        "a:visited": {
+          color: "inherit" /* or specify the desired color */,
+        },
+      }}
+    >
+      <AnimatedButton
+        style={{ ...style, ...springProps }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {" "}
+        <Title variant="h2">
+          <span>
+            <animated.span
+              style={{ transform: textStyles.y.to((y) => `translateY(${y})`) }}
+            >
+              {children}
+            </animated.span>
+          </span>
+        </Title>
+      </AnimatedButton>
+    </HomeSection1ButtonLink>
+  );
+};
 
 export default function HomeSection1({
   title,
@@ -53,14 +68,15 @@ export default function HomeSection1({
   const [buttonStyles2, buttonAPI2] = useAnimatedStyles("100%");
   const [textStyles1, textAPI1] = useAnimatedStyles("100%");
   const [textStyles2, textAPI2] = useAnimatedStyles("100%");
+  const [hovered, setHovered] = React.useState(false);
 
   const { scrollYProgress } = useScroll({
     onChange: ({ value: { scrollYProgress } }) => {
       console.log(scrollYProgress);
       const yValue =
-        scrollYProgress > 0.39 && scrollYProgress < 0.65 ? "0%" : "100%";
+        scrollYProgress > 0.39 && scrollYProgress < 0.85 ? "0%" : "100%";
       const opacityValue =
-        scrollYProgress > 0.39 && scrollYProgress < 0.65 ? 1 : 0;
+        scrollYProgress > 0.39 && scrollYProgress < 0.85 ? 1 : 0;
 
       [buttonAPI1, buttonAPI2].forEach((api) =>
         api.start({ opacity: opacityValue, y: yValue })

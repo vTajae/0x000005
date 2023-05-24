@@ -80,7 +80,7 @@ export const HomeSection2Wrapper = styled(Grid)({
   background: "linear-gradient(to top, rgba(245,245,245,1) 0%, rgba(173,242,230,1) 7%, rgba(173,242,230,1) 69%, #ADCEFF 99%)",
   color: "inherit",
   padding: "0 16px",
-  height: "100vh",
+  height: "60vh",
   textAlign: "center",
 });
 

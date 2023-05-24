@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import {
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
-import { StyledCard, SectionTitle, StyledBox, AboutWrapper, StyledBox2, StyledBox3 } from "./styles";
+  StyledCard,
+  SectionTitle,
+  StyledBox,
+  AboutWrapper,
+  StyledBox2,
+  StyledBox3,
+  TranslucentContainer,
+} from "./styles";
 import {
   whyChooseUsSectionData,
   featureSectionData,
@@ -37,7 +40,10 @@ ServiceCard.propTypes = {
 
 const Testimonial = ({ name, quote, image }) => (
   <Grid item xs={12} sm={4}>
-    <StyledCard elevation={0}>
+    <StyledCard
+      elevation={1}
+      sx={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+    >
       <CardMedia component="img" height="140" image={image} alt="Placeholder" />
       <CardContent>
         <Typography variant="subtitle1">{name}</Typography>
@@ -90,7 +96,7 @@ const TestimonialSection = ({ title, testimonials }) => (
     <Grid container spacing={4} justifyContent="center">
       {testimonials.map((testimonial) => (
         <Testimonial
-        image={testimonial.image}
+          image={testimonial.image}
           key={testimonial.id}
           name={testimonial.name}
           quote={testimonial.quote}
@@ -116,18 +122,20 @@ const WhyChooseUsSection = ({ title, items }) => (
     <SectionTitle variant="h3" align="center" color="primary">
       {title}
     </SectionTitle>
-    <Grid container spacing={4} justifyContent="center">
-      {items.map((item) => (
-        <Grid item xs={12} sm={6} key={item.id}>
-          <Typography variant="h4" align="center" color="primary">
-            {item.title}
-          </Typography>
-          <Typography align="center" sx={{ mt: 2 }}>
-            {item.description}
-          </Typography>
-        </Grid>
-      ))}
-    </Grid>
+    <TranslucentContainer>
+      <Grid container spacing={4} justifyContent="center">
+        {items.map((item) => (
+          <Grid item xs={12} sm={6} key={item.id}>
+            <Typography variant="h4" align="center" color="primary">
+              {item.title}
+            </Typography>
+            <Typography align="center" sx={{ mt: 2 }}>
+              {item.description}
+            </Typography>
+          </Grid>
+        ))}
+      </Grid>
+    </TranslucentContainer>
   </StyledBox2>
 );
 
@@ -148,12 +156,10 @@ const AboutUs = () => (
 
     <WhyChooseUsSection title="Why Choose Us?" items={whyChooseUsSectionData} />
 
-
     <TestimonialSection
       title="Testimonials"
       testimonials={testimonialSectionData}
     />
-
   </AboutWrapper>
 );
 

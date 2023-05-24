@@ -17,9 +17,8 @@ export const LoginWrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  backgroundColor: "white", /* Jordy Blue with 50% opacity */
+  backgroundColor: "rgba(255, 255, 255, 0.4)", /* Jordy Blue with 50% opacity */
   boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-  padding: "20px",
   borderRadius: "8px",
   padding: "50px",
 });

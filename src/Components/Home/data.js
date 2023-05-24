@@ -38,7 +38,7 @@ export const HomeSection2Data = [
   {
     title: "Latest",
     subtitle: "Stay up to date with the latest news and updates from the team.",
-    animatedTitle1: "Post 1",
-    animatedTitle2: "Post 2",
+    animatedTitle1: "",
+    animatedTitle2: "",
   },
 ];
