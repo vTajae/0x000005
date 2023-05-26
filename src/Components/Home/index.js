@@ -41,38 +41,6 @@ HeroSection.propTypes = {
 };
 
 
-// const HomeSection2 = ({ title, subtitle, animatedTitle1, animatedTitle2 }) => {
-//   const svgAnimation = useSpring({
-//     from: { scale: 1, rotateZ: -10 },
-//     to: { scale: 1.1, rotateZ: 10 },
-//     config: { tension: 300, friction: 20, mass: 1, duration: 6000 },
-//     loop: { reverse: true }, // use the "reverse" option in the "loop" object
-//   });
-
-//   return (
-//     <HomeSection2Wrapper container justifyContent="center">
-//       <Stack spacing={2}>
-//         <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-//           {title}
-//         </Typography>
-//         <Typography variant="h5">{subtitle}</Typography>
-//         <AnimatedSection>
-//           {/* Add your animated content for the first section */}
-//           <Typography variant="h3" color="primary">
-//             {animatedTitle1}
-//           </Typography>
-//         </AnimatedSection>
-//         <AnimatedSection>
-//           {/* Add your animated content for the second section */}
-//           <Typography variant="h3" color="secondary">
-//             {animatedTitle2}
-
-//           </Typography>
-//         </AnimatedSection>
-//       </Stack>
-//     </HomeSection2Wrapper>
-//   );
-// };
 
 
 const HomeSection2 = ({ title, subtitle }) => {

@@ -5,9 +5,11 @@ import {
   Typography,
   Button,
   Box,
+  Paper,
 } from "@mui/material";
 import { validateEmail } from "../../utils/helpers";
-import { StyledBox, Form } from "./styles";
+import { StyledBox, Form, FormWrapper } from "./styles";
+import { StyledTextField } from "../Login/styles";
 
 function Contact() {
   const [formState, setFormState] = useState({
@@ -49,13 +51,14 @@ function Contact() {
 
   return (
     <StyledBox>
+      <FormWrapper>
       <Form id="contact-form" onSubmit={handleSubmit}>
         <Grid container xs={12} spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant="h6">Contact Form</Typography>
+          <Grid item xs={12} textAlign={"center"}>
+          <h2>Contact Form</h2>
           </Grid>
           <Grid item xs={12}>
-            <TextField
+            <StyledTextField
               label="Name"
               name="name"
               value={name}
@@ -65,7 +68,7 @@ function Contact() {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
+            <StyledTextField
               label="Email address"
               type="email"
               name="email"
@@ -76,7 +79,7 @@ function Contact() {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField
+            <StyledTextField
               label="Message"
               name="message"
               multiline
@@ -101,6 +104,7 @@ function Contact() {
           </Grid>
         </Grid>
       </Form>
+      </FormWrapper>
     </StyledBox>
   );
 }

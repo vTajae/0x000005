@@ -21,14 +21,16 @@ export const LoginWrapper = styled("div")({
   boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
   borderRadius: "8px",
   padding: "50px",
+  width: "60%",
+  maxWidth: "500px",
 });
 
 export const FormWrapper = styled("form")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  
   marginTop: "30px",
+  width: "90%",
 });
 
 export const InputWrapper = styled("div")({

@@ -28,4 +28,17 @@ export const StyledBox = styled(Box)({
 export const Form = styled(FormControl)({
   alignItems: "center",
   margin: "auto",
+  padding: "50px",
+});
+
+export const FormWrapper = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  alignContent: "center",
+  margin: "auto",
+  backgroundColor: "rgba(255, 255, 255, 0.4)",
+  borderRadius: "10px",
+  padding: "25px",
+  width: "80%",
 });
