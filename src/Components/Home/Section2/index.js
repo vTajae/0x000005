@@ -56,7 +56,7 @@ const AnimatedButtonLink = ({ to, style, textStyles, children }) => {
   );
 };
 
-export default function HomeSection1({
+export default function HomeSection2({
   title,
   subtitle,
   animatedTitle1,
